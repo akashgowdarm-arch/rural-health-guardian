@@ -1,0 +1,22 @@
+FROM node:24-alpine AS base
+
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+COPY apps/api/package*.json ./apps/api/
+COPY packages/types/package*.json ./packages/types/
+COPY packages/config/package*.json ./packages/config/
+COPY agent/package*.json ./agent/
+
+RUN npm install
+
+# Copy source
+COPY . .
+
+EXPOSE 4000
+
+ENV PORT=4000
+ENV NODE_ENV=production
+
+CMD ["node", "--experimental-strip-types", "apps/api/src/index.ts"]

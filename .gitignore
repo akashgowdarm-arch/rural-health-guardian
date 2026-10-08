@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build Outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Python Virtual Environments & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables & Secrets (Never commit actual env files or credentials)
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+*.env
+*.env.local
+*.env.production
+
+# Keys, Certificates & Credentials
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+*service-role*
+*service_role*
+*supabase_service_role*
+*gemini_api_key*
+*.token
+secrets.json
+
+# Temporary & Local Scratch
+scratch/
+.system_generated/
+*.log
+
+# Vercel & IDE
+.vercel/
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db

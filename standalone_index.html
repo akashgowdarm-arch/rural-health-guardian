@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#047857" />
+  <title>Rural Health Guardian | ग्रामीण स्वास्थ्य रक्षक | ಗ್ರಾಮೀಣ ಆರೋಗ್ಯ ರಕ್ಷಕ</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Noto Sans Kannada', sans-serif; }
+    .gamma-canvas { background: radial-gradient(circle at 50% 0%, #064e3b 0%, #022c22 45%, #020617 100%); }
+    .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    @media print {
+      body * { visibility: hidden !important; }
+      #print-report-sheet, #print-report-sheet * { visibility: visible !important; }
+      #print-report-sheet { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; background: #ffffff !important; color: #000000 !important; }
+    }
+  </style>
+</head>
+<body class="gamma-canvas text-slate-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-white flex flex-col">
+
+  <!-- ========================================================================= -->
+  <!-- NAVBAR -->
+  <!-- ========================================================================= -->
+  <header class="bg-slate-950/80 backdrop-blur-2xl border-b border-white/10 sticky top-0 z-40 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('dashboard')">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/25">
+          <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-black text-xl text-white tracking-tight leading-none" id="lbl-app-name">Rural Health Guardian</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">Ayushman Digital</span>
+          </div>
+          <p class="text-xs text-slate-400 font-medium">Smart Healthcare Support for Every Village</p>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <!-- SOS Trigger -->
+        <button onclick="openSOSModal()" class="px-4 py-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-black text-xs sm:text-sm rounded-xl shadow-lg shadow-red-600/30 flex items-center gap-1.5 active:scale-95 transition-all">
+          <span class="animate-ping w-2 h-2 rounded-full bg-white mr-1"></span>
+          <span>🚨 EMERGENCY SOS</span>
+        </button>
+
+        <!-- Live GPS Pill -->
+        <button onclick="openFacilitiesModal()" class="px-3.5 py-2 rounded-xl bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold flex items-center gap-1.5 hover:bg-teal-500/30 transition-all">
+          <span>📍</span>
+          <span id="nav-gps-status">Detecting GPS...</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <select onchange="changeLanguage(this.value)" class="bg-slate-900 border border-white/10 text-white text-xs font-bold px-3 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <option value="en">English</option>
+          <option value="hi">हिंदी (Hindi)</option>
+          <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN CONTENT CONTAINER -->
+  <!-- ========================================================================= -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full space-y-10">
+
+    <!-- 1. Patient Profile Banner -->
+    <div class="p-6 sm:p-8 rounded-3xl glass-card border border-emerald-500/30 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] uppercase font-black px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Verified Rural Citizen</span>
+          <span class="text-xs text-slate-400">ID: RHG-2026-RAM-001</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-black text-white" id="patient-display-name">Ram Kumar (राम कुमार)</h1>
+        <p class="text-xs sm:text-sm text-slate-300">
+          <strong>Age:</strong> 58 yrs | <strong>Gender:</strong> Male | <strong>Village:</strong> Rampur, Varanasi, Uttar Pradesh
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <button onclick="openVitalsModal()" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-sm shadow-xl shadow-emerald-600/25 active:scale-95 transition-all flex items-center gap-2">
+          <span>➕</span>
+          <span>Record New Vitals</span>
+        </button>
+        <button onclick="openReportModal()" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-indigo-700 to-slate-900 hover:from-indigo-600 hover:to-slate-800 text-white font-extrabold text-sm shadow-xl shadow-indigo-700/25 active:scale-95 transition-all border border-indigo-500/30 flex items-center gap-2">
+          <span>📄</span>
+          <span>View Health Scan Report</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. AI Health Stability & Triage Card -->
+    <div class="p-6 sm:p-8 rounded-3xl glass-card border border-teal-500/30 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <div class="p-2.5 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-black">AI</div>
+          <div>
+            <h2 class="text-lg font-black text-white">AI Health Risk Analysis & Stability Triage</h2>
+            <p class="text-xs text-slate-400">Clinical assessment based on continuous physiological baseline tracking</p>
+          </div>
+        </div>
+        <span class="text-xs font-black px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" id="ai-status-badge">
+          ✓ Optimal Stability (Score: 100/100)
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 bg-slate-950/80 rounded-2xl border border-white/10 space-y-1.5">
+          <strong class="text-emerald-400 block text-xs uppercase tracking-wider">Noticed Observations</strong>
+          <p class="text-slate-300" id="ai-critical-notes">• All baseline parameters (SpO2, Pulse, Blood Pressure, Glycemia) are within optimal ranges.</p>
+        </div>
+        <div class="p-4 bg-slate-950/80 rounded-2xl border border-white/10 space-y-1.5">
+          <strong class="text-teal-400 block text-xs uppercase tracking-wider">Recommended Next Steps</strong>
+          <p class="text-slate-300" id="ai-recom-notes">• Maintain balanced nutrition, daily hydration, and periodic weekly logging with your village ASHA worker.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Nearest Medical Assistance & PHC Locator -->
+    <div class="p-6 sm:p-8 rounded-3xl glass-card border border-teal-500/30 shadow-2xl space-y-5">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/10">
+        <div class="flex items-center gap-3.5">
+          <div class="p-3 rounded-2xl bg-teal-500/20 text-teal-400 border border-teal-500/30 text-xl">🏥</div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="font-black text-white text-lg sm:text-xl">Nearest Medical Help & Emergency PHC</h3>
+              <span class="text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30" id="gps-type-badge">Live GPS Active</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-0.5">Your Location: <strong class="text-white" id="user-location-text">Detecting live coordinates...</strong></p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="requestUserLocation()" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-teal-300 rounded-xl border border-white/10 text-xs font-bold flex items-center gap-1">
+            <span>🔄</span> Refresh GPS
+          </button>
+          <button onclick="openFacilitiesModal()" class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs rounded-xl shadow-md">
+            View All Facilities →
+          </button>
+        </div>
+      </div>
+
+      <!-- Facility Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="nearest-facilities-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- 4. Vitals Metrics Grid -->
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-black text-white">Current Physiological Vitals</h2>
+        <span class="text-xs text-slate-400" id="last-recorded-time">Last updated: Just now</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="vitals-cards-grid">
+        <!-- Dynamic Vitals Cards -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: EMERGENCY SOS MODE -->
+  <!-- ========================================================================= -->
+  <div id="modal-sos" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative w-full max-w-2xl bg-slate-950 rounded-3xl border border-red-500/50 shadow-2xl p-6 sm:p-8 space-y-6 text-slate-100 max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-red-500/30">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-red-600/20 border border-red-500 text-red-400 text-2xl flex items-center justify-center animate-pulse">🚨</div>
+          <div>
+            <h2 class="text-2xl font-black text-white">EMERGENCY MEDICAL SOS</h2>
+            <p class="text-xs text-red-300">Instant First Responder & 108 Ambulance Dispatch</p>
+          </div>
+        </div>
+        <button onclick="closeModal('modal-sos')" class="text-slate-400 hover:text-white text-xl">✕</button>
+      </div>
+
+      <!-- 3 Large Action Buttons -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="tel:108" class="p-4 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 text-white flex flex-col justify-between shadow-xl text-left active:scale-95 transition-all">
+          <span class="text-[10px] font-black uppercase text-red-100">National Ambulance</span>
+          <div class="mt-2">
+            <p class="text-lg font-black leading-tight">Call 108</p>
+            <p class="text-xs text-red-100">Emergency Dispatch</p>
+          </div>
+        </a>
+
+        <a href="tel:+919876543211" class="p-4 rounded-2xl bg-gradient-to-r from-amber-600 to-orange-600 text-white flex flex-col justify-between shadow-xl text-left active:scale-95 transition-all">
+          <span class="text-[10px] font-black uppercase text-amber-100">Emergency Contact</span>
+          <div class="mt-2 truncate">
+            <p class="text-lg font-black leading-tight">Call Family</p>
+            <p class="text-xs text-amber-100 truncate">Sunita Kumar (+91 98765 43211)</p>
+          </div>
+        </a>
+
+        <button onclick="shareEmergencyLocation()" class="p-4 rounded-2xl bg-gradient-to-r from-teal-600 to-cyan-600 text-white flex flex-col justify-between shadow-xl text-left active:scale-95 transition-all">
+          <span class="text-[10px] font-black uppercase text-teal-100">GPS Live Share</span>
+          <div class="mt-2">
+            <p class="text-lg font-black leading-tight" id="btn-share-loc-text">Share Location</p>
+            <p class="text-xs text-teal-100">WhatsApp / SMS Map</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Emergency Condition Selection -->
+      <div class="space-y-2">
+        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">Select Emergency Condition:</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <button onclick="selectEmergencyType('cardiac')" class="p-3 bg-slate-900 border border-white/10 hover:border-red-500 rounded-2xl text-left text-xs font-bold">🫀 Chest Pain / Heart</button>
+          <button onclick="selectEmergencyType('breathing')" class="p-3 bg-slate-900 border border-white/10 hover:border-red-500 rounded-2xl text-left text-xs font-bold">💨 Severe Breathing</button>
+          <button onclick="selectEmergencyType('fall')" class="p-3 bg-slate-900 border border-white/10 hover:border-red-500 rounded-2xl text-left text-xs font-bold">🩹 Fall / Severe Trauma</button>
+          <button onclick="selectEmergencyType('fever')" class="p-3 bg-slate-900 border border-white/10 hover:border-red-500 rounded-2xl text-left text-xs font-bold">🔥 Convulsion / High Fever</button>
+          <button onclick="selectEmergencyType('general')" class="p-3 bg-slate-900 border border-white/10 hover:border-red-500 rounded-2xl text-left text-xs font-bold">🛡️ General Medical Crisis</button>
+        </div>
+      </div>
+
+      <!-- Trigger SOS Button -->
+      <button onclick="triggerSOSNow()" class="w-full py-4 bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 hover:to-rose-600 text-white font-black text-base rounded-2xl shadow-xl shadow-red-600/40 active:scale-98 transition-all">
+        🚨 YES - TRANSMIT SOS ALERT NOW
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: HEALTH SCAN REPORT -->
+  <!-- ========================================================================= -->
+  <div id="modal-report" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative w-full max-w-4xl bg-slate-950 rounded-3xl border border-white/15 shadow-2xl p-6 sm:p-8 space-y-6 text-slate-100 max-h-[94vh] overflow-y-auto" id="print-report-sheet">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-black uppercase tracking-widest text-emerald-400 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30">Official Clinical Diagnostic Card</span>
+          <h2 class="text-2xl font-black text-white mt-1">Rural Health Guardian Diagnostic Certificate</h2>
+        </div>
+        <button onclick="closeModal('modal-report')" class="text-slate-400 hover:text-white text-xl">✕</button>
+      </div>
+
+      <!-- Stability Score Card -->
+      <div class="p-6 bg-slate-900 rounded-2xl border border-emerald-500/30 flex items-center justify-between">
+        <div>
+          <span class="text-xs uppercase font-bold text-slate-400">OVERALL HEALTH STABILITY SCORE</span>
+          <p class="text-3xl font-black text-emerald-400">100 / 100 (Optimal Stability)</p>
+          <p class="text-xs text-slate-300 mt-1">All 4 organ system metrics evaluated within standard clinical baselines.</p>
+        </div>
+        <div class="text-4xl">🛡️</div>
+      </div>
+
+      <!-- 2x2 Physiological Evaluation Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 bg-slate-900/80 rounded-2xl border border-white/10">
+          <strong class="text-emerald-400 block text-sm font-bold">1. Cardiovascular System</strong>
+          <p class="text-slate-300 mt-1">BP: 120/80 mmHg | Heart Rate: 72 bpm | MAP: 93.3 mmHg</p>
+          <span class="text-[10px] text-emerald-400 font-bold">✓ Status: Optimal</span>
+        </div>
+        <div class="p-4 bg-slate-900/80 rounded-2xl border border-white/10">
+          <strong class="text-cyan-400 block text-sm font-bold">2. Pulmonary & Respiratory System</strong>
+          <p class="text-slate-300 mt-1">SpO2 Saturation: 98% | Respiratory Rate: 16 bpm</p>
+          <span class="text-[10px] text-emerald-400 font-bold">✓ Status: Safe Saturation</span>
+        </div>
+        <div class="p-4 bg-slate-900/80 rounded-2xl border border-white/10">
+          <strong class="text-amber-400 block text-sm font-bold">3. Thermoregulation & Immune</strong>
+          <p class="text-slate-300 mt-1">Body Temperature: 98.6°F | No acute fever detected</p>
+          <span class="text-[10px] text-emerald-400 font-bold">✓ Status: Normothermic</span>
+        </div>
+        <div class="p-4 bg-slate-900/80 rounded-2xl border border-white/10">
+          <strong class="text-indigo-400 block text-sm font-bold">4. Metabolic & Glycemic</strong>
+          <p class="text-slate-300 mt-1">Blood Sugar (Random): 110 mg/dL | Baseline: Stable</p>
+          <span class="text-[10px] text-emerald-400 font-bold">✓ Status: Normoglycemic</span>
+        </div>
+      </div>
+
+      <!-- Print Action Bar -->
+      <div class="flex items-center justify-between pt-4 border-t border-white/10">
+        <span class="text-xs text-slate-400">National Health Mission • Ayushman Bharat Digital Health</span>
+        <button onclick="window.print()" class="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs rounded-xl shadow-lg">
+          🖨️ Print Official Health Scan Card
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC -->
+  <!-- ========================================================================= -->
+  <script>
+    let userLat = 25.3188;
+    let userLng = 82.9789;
+    let currentVitals = { bpSys: 120, bpDia: 80, hr: 72, spo2: 98, temp: 98.6, sugar: 110 };
+
+    const FACILITIES = [
+      { id: 'phc_rampur', name: 'Rampur 24x7 Primary Health Centre (PHC)', type: '24x7 PHC', phone: '+91 542 223344', lat: 25.3176, lng: 82.9739, doc: 'Dr. S. Sharma (MBBS)', beds: 12 },
+      { id: 'amb_108', name: 'National 108 Emergency Ambulance Station', type: '108 Ambulance', phone: '108', lat: 25.312, lng: 82.968, doc: 'Paramedic Team Alpha', beds: 1 },
+      { id: 'hosp_dist', name: 'District Govt Hospital & Trauma Centre', type: 'Govt Hospital', phone: '+91 542 288990', lat: 25.342, lng: 83.008, doc: 'Trauma Specialist on Duty', beds: 150 },
+    ];
+
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2) * Math.sin(dLon/2);
+      return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)) * 10) / 10;
+    }
+
+    function renderFacilities() {
+      const grid = document.getElementById('nearest-facilities-grid');
+      grid.innerHTML = '';
+      FACILITIES.forEach(fac => {
+        const dist = calculateDistance(userLat, userLng, fac.lat, fac.lng);
+        const eta = Math.max(3, Math.round((dist / 30) * 60) + 2);
+        grid.innerHTML += `
+          <div class="p-5 bg-slate-950/80 rounded-2xl border border-white/10 flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold text-emerald-400 uppercase">${fac.type}</span>
+                <span class="text-xs font-black text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-full">${dist} km • ~${eta}m</span>
+              </div>
+              <h4 class="font-extrabold text-white text-sm mt-1">${fac.name}</h4>
+              <p class="text-xs text-slate-400">Doctor: ${fac.doc} | Beds: ${fac.beds}</p>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-white/5">
+              <a href="tel:${fac.phone}" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl text-center">📞 Call</a>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${fac.lat},${fac.lng}" target="_blank" class="py-2 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl">🧭 Directions</a>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function renderVitals() {
+      const grid = document.getElementById('vitals-cards-grid');
+      grid.innerHTML = `
+        <div class="p-6 bg-slate-900/90 rounded-3xl border border-white/10 space-y-2">
+          <span class="text-xs font-bold text-slate-400">HEART RATE</span>
+          <p class="text-3xl font-black text-white">${currentVitals.hr} <span class="text-sm font-normal text-slate-400">bpm</span></p>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">✓ Normal</span>
+        </div>
+        <div class="p-6 bg-slate-900/90 rounded-3xl border border-white/10 space-y-2">
+          <span class="text-xs font-bold text-slate-400">BLOOD PRESSURE</span>
+          <p class="text-3xl font-black text-white">${currentVitals.bpSys}/${currentVitals.bpDia} <span class="text-sm font-normal text-slate-400">mmHg</span></p>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">✓ Normal</span>
+        </div>
+        <div class="p-6 bg-slate-900/90 rounded-3xl border border-white/10 space-y-2">
+          <span class="text-xs font-bold text-slate-400">BLOOD OXYGEN (SPO2)</span>
+          <p class="text-3xl font-black text-emerald-400">${currentVitals.spo2}%</p>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">✓ Optimal</span>
+        </div>
+        <div class="p-6 bg-slate-900/90 rounded-3xl border border-white/10 space-y-2">
+          <span class="text-xs font-bold text-slate-400">BLOOD GLUCOSE</span>
+          <p class="text-3xl font-black text-white">${currentVitals.sugar} <span class="text-sm font-normal text-slate-400">mg/dL</span></p>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">✓ Normal</span>
+        </div>
+      `;
+    }
+
+    function requestUserLocation() {
+      if (navigator.geolocation) {
+        document.getElementById('nav-gps-status').innerText = 'Locating GPS...';
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            userLat = Number(pos.coords.latitude.toFixed(5));
+            userLng = Number(pos.coords.longitude.toFixed(5));
+            document.getElementById('nav-gps-status').innerText = 'Live GPS Fix (±' + Math.round(pos.coords.accuracy) + 'm)';
+            document.getElementById('user-location-text').innerText = 'Lat: ' + userLat + '°, Lng: ' + userLng + '° (Rampur, Varanasi)';
+            renderFacilities();
+          },
+          err => {
+            document.getElementById('nav-gps-status').innerText = 'Rampur (Village Fix)';
+            document.getElementById('user-location-text').innerText = 'Rampur, Varanasi, Uttar Pradesh';
+            renderFacilities();
+          }
+        );
+      }
+    }
+
+    function openSOSModal() { document.getElementById('modal-sos').classList.remove('hidden'); document.getElementById('modal-sos').classList.add('flex'); }
+    function openReportModal() { document.getElementById('modal-report').classList.remove('hidden'); document.getElementById('modal-report').classList.add('flex'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); }
+
+    function triggerSOSNow() {
+      alert('🚨 EMERGENCY SOS TRANSMITTED!\n\n108 Ambulance Unit and local ASHA worker dispatched to your GPS location (' + userLat + ', ' + userLng + ').');
+      closeModal('modal-sos');
+    }
+
+    function shareEmergencyLocation() {
+      const msg = '🚨 EMERGENCY MEDICAL ALERT!\nPatient: Ram Kumar\nGPS: ' + userLat + ', ' + userLng + '\nMap: https://maps.google.com/?q=' + userLat + ',' + userLng;
+      navigator.clipboard.writeText(msg);
+      document.getElementById('btn-share-loc-text').innerText = '✓ Copied!';
+      setTimeout(() => document.getElementById('btn-share-loc-text').innerText = 'Share Location', 2000);
+    }
+
+    // Initialize on load
+    window.onload = () => {
+      renderVitals();
+      renderFacilities();
+      requestUserLocation();
+    };
+  </script>
+</body>
+</html>

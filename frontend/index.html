@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#047857" />
+  <meta name="description" content="Rural Health Guardian - Multi-Step Healthcare Portal, Emergency Assistance & Doctor Diagnostic Reports" />
+  <title>Rural Health Guardian | ग्रामीण स्वास्थ्य रक्षक | ಗ್ರಾಮೀಣ ಆರೋಗ್ಯ ರಕ್ಷಕ</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans, Noto Sans Devanagari, Noto Sans Kannada -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Noto+Sans+Kannada:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Leaflet Interactive Maps CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- External Stylesheet with A4 Print Engine -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="gamma-canvas text-slate-100 min-h-screen antialiased flex flex-col selection:bg-emerald-500 selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- 1. TOP GLOBAL NAVIGATION & STEPPER & PROMINENT LANGUAGE SELECTOR -->
+  <!-- ========================================================================= -->
+  <header class="bg-slate-950/90 backdrop-blur-2xl border-b border-white/10 sticky top-0 z-40 shadow-2xl no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-auto sm:h-20 flex flex-col md:flex-row md:items-center justify-between gap-3 py-3 sm:py-0">
+      
+      <!-- Brand & Status -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="setStep(1)">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/25 flex-shrink-0">
+            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-black text-base sm:text-lg text-white tracking-tight leading-none" id="lbl-brand-title">RURAL HEALTH GUARDIAN</span>
+              <span id="backend-status-pill" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                ● API Ready
+              </span>
+              <span id="network-status-pill" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> ONLINE
+              </span>
+            </div>
+            <p class="text-[11px] text-teal-400 font-semibold" id="lbl-brand-subtitle">AI-Powered Early Warning & Emergency Response System for Rural Healthcare</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center & Right: Progress Stepper + PROMINENT TRILINGUAL LANGUAGE SELECTOR -->
+      <div class="flex flex-wrap items-center justify-between md:justify-end gap-2 sm:gap-3">
+        
+        <!-- Multi-Step Progress Stepper (Step 1 -> Step 2 -> Step 3) -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <button type="button" id="stepper-pill-1" onclick="setStep(1)" class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 font-black text-xs shadow-md cursor-pointer transition-all" title="Navigate to Patient Registration">
+            <span id="stepper-badge-1" class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-[10px] sm:text-xs">1</span>
+            <span class="hidden sm:inline" id="lbl-stepper-1">Registration</span>
+          </button>
+
+          <div class="w-2 h-0.5 bg-white/10 hidden sm:block"></div>
+
+          <button type="button" id="stepper-pill-2" onclick="setStep(2)" class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-slate-900/40 text-slate-400 hover:text-slate-200 border border-white/5 font-medium text-xs cursor-pointer transition-all" title="Navigate to Health Services">
+            <span id="stepper-badge-2" class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] sm:text-xs">2</span>
+            <span class="hidden sm:inline" id="lbl-stepper-2">Health Services</span>
+          </button>
+
+          <div class="w-2 h-0.5 bg-white/10 hidden sm:block"></div>
+
+          <button type="button" id="stepper-pill-3" onclick="setStep(3)" class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-slate-900/40 text-slate-400 hover:text-slate-200 border border-white/5 font-medium text-xs cursor-pointer transition-all" title="Navigate to Doctor Diagnostic Report">
+            <span id="stepper-badge-3" class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] sm:text-xs">3</span>
+            <span class="hidden sm:inline" id="lbl-stepper-3">Doctor Report</span>
+          </button>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- PROMINENT 8-LANGUAGE SELECTOR (EN, HI, KN, TA, TE, ML, BN, OR) -->
+        <!-- =================================================================== -->
+        <div class="flex items-center gap-1 bg-slate-900/90 p-1 rounded-2xl border border-teal-500/30 shadow-lg overflow-x-auto max-w-full">
+          <button
+            id="lang-btn-en"
+            onclick="setLanguage('en')"
+            class="px-2.5 py-1 rounded-xl text-xs font-black transition-all bg-emerald-600 text-white shadow-md cursor-pointer whitespace-nowrap"
+            title="English"
+          >
+            English
+          </button>
+          <button
+            id="lang-btn-hi"
+            onclick="setLanguage('hi')"
+            class="px-2.5 py-1 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white cursor-pointer whitespace-nowrap"
+            title="Hindi (हिंदी)"
+          >
+            हिंदी
+          </button>
+          <button
+            id="lang-btn-kn"
+            onclick="setLanguage('kn')"
+            class="px-2.5 py-1 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white cursor-pointer whitespace-nowrap"
+            title="Kannada (ಕನ್ನಡ)"
+          >
+            ಕನ್ನಡ
+          </button>
+          <button
+            id="lang-btn-ta"
+            onclick="setLanguage('ta')"
+            class="px-2.5 py-1 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white cursor-pointer whitespace-nowrap"
+            title="Tamil (தமிழ்)"
+          >
+            தமிழ்
+          </button>
+          <button
+            id="lang-btn-te"
+            onclick="setLanguage('te')"
+            class="px-2.5 py-1 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white cursor-pointer whitespace-nowrap"
+            title="Telugu (తెలుగు)"
+          >
+            తెలుగు
+          </button>
+          <button
+            id="lang-btn-ml"
+            onclick="setLanguage('ml')"
+            class="px-2.5 py-1 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white cursor-pointer whitespace-nowrap"
+            title="Malayalam (മലയാളം)"
+          >
+            മലയാളം
+          </button>
+          <button
+            id="lang-btn-bn"
+            onclick="setLanguage('bn')"
+            class="px-2.5 py-1 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white cursor-pointer whitespace-nowrap"
+            title="Bengali (বাংলা)"
+          >
+            বাংলা
+          </button>
+          <button
+            id="lang-btn-or"
+            onclick="setLanguage('or')"
+            class="px-2.5 py-1 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white cursor-pointer whitespace-nowrap"
+            title="Odia / Odissa (ଓଡ଼ିଆ)"
+          >
+            ଓଡ଼ିଆ
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. MULTI-STEP BODY CONTAINER -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full">
+    <!-- ======================================================================= -->
+    <!-- STEP 1: PATIENT REGISTRATION -->
+    <!-- ======================================================================= -->
+    <div id="step-1-view" class="step-pane max-w-3xl mx-auto space-y-8 animate-fade-in">
+      
+      <!-- Welcome Screen Header -->
+      <div class="p-6 sm:p-8 rounded-3xl glass-card border border-emerald-500/30 shadow-2xl text-center space-y-3 relative overflow-hidden">
+        <div class="w-16 h-16 rounded-3xl bg-emerald-500/20 text-emerald-400 border border-emerald-400/40 flex items-center justify-center mx-auto text-3xl shadow-lg">
+          🛡️
+        </div>
+        <span class="text-xs uppercase font-extrabold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" id="lbl-step1-badge">
+          Step 1 of 3: Patient Intake
+        </span>
+        <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight" id="lbl-step1-title">Patient Registration</h1>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto" id="lbl-step1-desc">
+          Welcome to <strong>Rural Health Guardian</strong>. Register the patient to begin clinical vital checks, GPS emergency locator, and doctor diagnostic reports.
+        </p>
+      </div>
+
+      <!-- Registration Form (No default/dummy data, clean placeholders) -->
+      <form onsubmit="handleRegistrationSubmit(event)" class="p-6 sm:p-8 rounded-3xl glass-card border border-white/15 shadow-2xl space-y-6">
+        
+        <!-- Profile Memory Indicator Banner -->
+        <div id="profile-memory-banner" class="hidden p-3.5 bg-emerald-950/80 border border-emerald-500/40 rounded-2xl text-emerald-200 text-xs font-semibold flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 shadow-lg">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xs flex-shrink-0">💾</span>
+            <span>Returning Patient Profile Loaded: <strong id="mem-patient-name" class="text-white"></strong> <span class="text-teal-400 font-normal">(Auto-filled from memory)</span></span>
+          </div>
+          <div class="flex items-center gap-2 ml-auto sm:ml-0">
+            <button type="button" onclick="setStep(2)" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition-colors cursor-pointer">
+              Go to Dashboard →
+            </button>
+            <button type="button" onclick="clearPatientProfile()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-[11px] transition-colors cursor-pointer">
+              Clear / New Patient
+            </button>
+          </div>
+        </div>
+
+        <!-- Error Notice Banner -->
+        <div id="reg-error-banner" class="hidden p-3.5 bg-red-950/90 border border-red-500/50 rounded-2xl text-red-200 text-xs font-semibold flex items-center gap-2 animate-pulse">
+          <span>⚠️</span>
+          <span id="reg-error-msg">Please complete all required fields correctly.</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          
+          <!-- Full Name -->
+          <div class="sm:col-span-2">
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-fullname">
+              Full Name <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="text"
+              id="reg-fullname"
+              required
+              placeholder="Enter patient full name"
+              value=""
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+            />
+          </div>
+
+          <!-- Age -->
+          <div>
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-age">
+              Age (Years) <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="number"
+              id="reg-age"
+              required
+              min="1"
+              max="125"
+              placeholder="e.g. 45"
+              value=""
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+            />
+          </div>
+
+          <!-- Gender -->
+          <div>
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-gender">
+              Gender <span class="text-red-400">*</span>
+            </label>
+            <select
+              id="reg-gender"
+              required
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm cursor-pointer"
+            >
+              <option value="" disabled selected id="opt-gender-default">-- Select Gender --</option>
+              <option value="Male" id="opt-gender-male">Male</option>
+              <option value="Female" id="opt-gender-female">Female</option>
+              <option value="Other" id="opt-gender-other">Other</option>
+            </select>
+          </div>
+
+          <!-- Phone Number -->
+          <div>
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-phone">
+              Phone Number <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="tel"
+              id="reg-phone"
+              required
+              placeholder="10-digit mobile number"
+              value=""
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+            />
+          </div>
+
+          <!-- Emergency Contact Number -->
+          <div>
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-emergency">
+              Emergency Contact Number <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="tel"
+              id="reg-emergency"
+              required
+              placeholder="Emergency contact number"
+              value=""
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+            />
+          </div>
+
+          <!-- Village / Gram Panchayat -->
+          <div>
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-village">
+              Village / Gram Panchayat <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="text"
+              id="reg-village"
+              required
+              placeholder="Enter village / gram panchayat"
+              value=""
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+            />
+          </div>
+
+          <!-- District -->
+          <div>
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-district">
+              District <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="text"
+              id="reg-district"
+              required
+              placeholder="Enter district / taluk"
+              value=""
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+            />
+          </div>
+
+          <!-- State -->
+          <div>
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-state">
+              State <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="text"
+              id="reg-state"
+              required
+              placeholder="e.g. Karnataka, UP, Tamil Nadu"
+              value=""
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+            />
+          </div>
+
+          <!-- ABHA ID (Optional) -->
+          <div>
+            <label class="block font-bold text-slate-200 mb-1.5 uppercase tracking-wider text-[11px]" id="lbl-form-abha">
+              ABHA Health ID <span class="text-slate-400">(Optional)</span>
+            </label>
+            <input
+              type="text"
+              id="reg-abha"
+              placeholder="14-digit ABHA ID (optional)"
+              value=""
+              class="w-full px-4 py-3 bg-slate-900/90 border border-white/15 rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+            />
+          </div>
+
+        </div>
+
+        <!-- Submit Button (Register & Proceed) -->
+        <button
+          type="submit"
+          class="w-full py-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-sm sm:text-base rounded-2xl shadow-xl shadow-emerald-600/30 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer border border-emerald-400/40"
+        >
+          <span id="btn-submit-step1">SAVE PATIENT & PROCEED TO HEALTH SERVICES</span>
+          <span>➔</span>
+        </button>
+
+        <!-- Direct Health Services Bypass Button -->
+        <button
+          type="button"
+          onclick="setStep(2)"
+          class="w-full py-3 bg-slate-900/80 hover:bg-slate-800 text-teal-300 hover:text-white font-extrabold text-xs sm:text-sm rounded-2xl border border-teal-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+          id="btn-direct-services"
+        >
+          <span>⚡</span>
+          <span>Open Health Services Directly (Quick Vitals, GPS Map & Emergency SOS)</span>
+          <span>➔</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- STEP 2: HEALTH SERVICES DASHBOARD (6 Core Sections) -->
+    <!-- ======================================================================= -->
+    <div id="step-2-view" class="step-pane space-y-8 hidden animate-fade-in">
+      
+      <!-- Patient Identity Header Banner -->
+      <div class="p-6 sm:p-8 rounded-3xl glass-card border border-emerald-500/30 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+        <div>
+          <span class="text-[10px] uppercase font-black px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" id="lbl-step2-badge">
+            Step 2 of 3: Active Healthcare Encounter
+          </span>
+          <h1 class="text-2xl sm:text-3xl font-black text-white mt-1" id="dash-patient-name">--</h1>
+          <p class="text-xs sm:text-sm text-slate-300 mt-0.5" id="dash-patient-meta">
+            Please register patient in Step 1
+          </p>
+        </div>
+
+        <button
+          onclick="setStep(1)"
+          class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs rounded-xl border border-white/10 self-start md:self-center cursor-pointer"
+          id="btn-edit-patient"
+        >
+          ← Edit Patient Info
+        </button>
+      </div>
+
+      <!-- 6 SERVICES GRID -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+        
+        <!-- SECTION 1: HEALTH VITALS ENTRY -->
+        <div id="sec-vitals" class="p-6 sm:p-8 rounded-3xl glass-card border border-emerald-500/30 shadow-xl space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <h3 class="font-black text-white text-lg flex items-center gap-2">
+              <span class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400">1</span>
+              <span id="lbl-sec1-title">Health Vitals Record</span>
+            </h3>
+            <span class="text-[10px] font-bold text-slate-400 uppercase" id="lbl-sec1-tag">Input Telemetry</span>
+          </div>
+
+          <!-- Jury Demo Quick-Load Buttons -->
+          <div class="p-3.5 bg-slate-950/80 rounded-2xl border border-teal-500/30 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-teal-300 flex items-center gap-1.5">
+                <span>⚡</span> <span>Jury Demo Quick-Load Presets:</span>
+              </span>
+              <span class="text-[10px] text-slate-400 font-mono">1-Click Scenarios</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                onclick="loadDemoVitals('normal')"
+                class="px-2 py-2 rounded-xl bg-emerald-950/70 hover:bg-emerald-900 border border-emerald-500/40 text-emerald-300 font-extrabold text-[11px] cursor-pointer transition-all text-center shadow-sm"
+                title="BP 118/78, SpO2 98%, HR 72, Temp 98.4°F, Sugar 105"
+              >
+                🟢 Normal
+              </button>
+              <button
+                type="button"
+                onclick="loadDemoVitals('warning')"
+                class="px-2 py-2 rounded-xl bg-amber-950/70 hover:bg-amber-900 border border-amber-500/40 text-amber-300 font-extrabold text-[11px] cursor-pointer transition-all text-center shadow-sm"
+                title="BP 142/92, SpO2 93%, HR 96, Temp 99.4°F, Sugar 145"
+              >
+                🟠 Early Warning
+              </button>
+              <button
+                type="button"
+                onclick="loadDemoVitals('emergency')"
+                class="px-2 py-2 rounded-xl bg-rose-950/70 hover:bg-rose-900 border border-rose-500/40 text-rose-300 font-extrabold text-[11px] cursor-pointer transition-all text-center shadow-sm"
+                title="BP 185/120, SpO2 88%, HR 125, Temp 102.5°F, Sugar 280"
+              >
+                🔴 Emergency
+              </button>
+            </div>
+          </div>
+
+          <form onsubmit="handleVitalsFormSubmit(event)" class="space-y-4 text-xs">
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="font-bold text-slate-300" id="lbl-vit-bpsys">Systolic BP (mmHg)</label>
+                  <span id="badge-vit-bpsys" class="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🟢 Normal</span>
+                </div>
+                <input type="number" id="vit-bpsys" min="50" max="260" value="120" oninput="updateLiveVitalsBadges()" required class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-bold focus:ring-2 focus:ring-emerald-500" />
+                <span class="text-[9px] text-slate-400 block mt-0.5 font-mono">Baseline: 118 mmHg</span>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="font-bold text-slate-300" id="lbl-vit-bpdia">Diastolic BP (mmHg)</label>
+                  <span id="badge-vit-bpdia" class="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🟢 Normal</span>
+                </div>
+                <input type="number" id="vit-bpdia" min="30" max="160" value="80" oninput="updateLiveVitalsBadges()" required class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-bold focus:ring-2 focus:ring-emerald-500" />
+                <span class="text-[9px] text-slate-400 block mt-0.5 font-mono">Baseline: 78 mmHg</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="font-bold text-slate-300" id="lbl-vit-hr">Heart Rate (BPM)</label>
+                  <span id="badge-vit-hr" class="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🟢 Normal</span>
+                </div>
+                <input type="number" id="vit-hr" min="30" max="240" value="72" oninput="updateLiveVitalsBadges()" required class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-bold focus:ring-2 focus:ring-emerald-500" />
+                <span class="text-[9px] text-slate-400 block mt-0.5 font-mono">Baseline: 70 BPM</span>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="font-bold text-slate-300" id="lbl-vit-spo2">Oxygen SpO2 (%)</label>
+                  <span id="badge-vit-spo2" class="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🟢 Optimal</span>
+                </div>
+                <input type="number" id="vit-spo2" min="40" max="100" value="98" oninput="updateLiveVitalsBadges()" required class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-bold focus:ring-2 focus:ring-emerald-500" />
+                <span class="text-[9px] text-slate-400 block mt-0.5 font-mono">Baseline: 98%</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="font-bold text-slate-300" id="lbl-vit-temp">Temperature (°F)</label>
+                  <span id="badge-vit-temp" class="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🟢 Normal</span>
+                </div>
+                <input type="number" step="0.1" id="vit-temp" min="90" max="110" value="98.6" oninput="updateLiveVitalsBadges()" required class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-bold focus:ring-2 focus:ring-emerald-500" />
+                <span class="text-[9px] text-slate-400 block mt-0.5 font-mono">Baseline: 98.4°F</span>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="font-bold text-slate-300" id="lbl-vit-sugar">Blood Sugar (mg/dL)</label>
+                  <span id="badge-vit-sugar" class="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🟢 Normal</span>
+                </div>
+                <input type="number" id="vit-sugar" min="20" max="600" value="110" oninput="updateLiveVitalsBadges()" required class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-bold focus:ring-2 focus:ring-emerald-500" />
+                <span class="text-[9px] text-slate-400 block mt-0.5 font-mono">Baseline: 105 mg/dL</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-300 mb-1" id="lbl-vit-symptoms">Symptoms / Patient Complaints</label>
+              <input type="text" id="vit-symptoms" placeholder="e.g. Mild fatigue, routine preventive check" value="Routine health checkup" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-bold focus:ring-2 focus:ring-emerald-500" />
+            </div>
+
+            <button type="submit" class="w-full py-3 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-500 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-emerald-600/20 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer border border-emerald-400/30" id="btn-save-vitals">
+              <span>🩺</span>
+              <span id="lbl-btn-save-vitals">SAVE VITALS & RUN AI CLINICAL TRIAGE</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- SECTION 2: AI HEALTH ASSESSMENT -->
+        <div id="sec-ai" class="p-6 sm:p-8 rounded-3xl glass-card border border-teal-500/30 shadow-xl space-y-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-white/10">
+              <h3 class="font-black text-white text-lg flex items-center gap-2">
+                <span class="p-2 rounded-xl bg-teal-500/20 text-teal-400">2</span>
+                <span id="lbl-sec2-title">AI Health Assessment</span>
+              </h3>
+              <span id="ai-risk-badge" class="px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                LOW RISK
+              </span>
+            </div>
+
+            <!-- Stability Bar -->
+            <div class="space-y-1.5 pt-3">
+              <div class="flex justify-between text-xs font-bold text-slate-300">
+                <span id="lbl-stability-score-title">Physiological Stability Score</span>
+                <span id="ai-score-text" class="text-emerald-400 font-bold">100 / 100</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-white/10">
+                <div id="ai-score-bar" class="h-full rounded-full bg-emerald-500 transition-all duration-500" style="width: 100%;"></div>
+              </div>
+            </div>
+
+            <!-- Explainable AI: "Why this alert?" -->
+            <div class="p-3.5 bg-slate-950/90 rounded-2xl border border-teal-500/30 space-y-1.5 mt-3">
+              <div class="flex items-center justify-between">
+                <strong class="text-teal-300 uppercase font-bold text-[10px] flex items-center gap-1.5" id="lbl-why-head">
+                  <span>🔍</span> <span>Why this alert? (Explainable Clinical Factors)</span>
+                </strong>
+                <span class="text-[9px] text-teal-400 font-mono">Real-Time Evaluation</span>
+              </div>
+              <ul id="ai-why-list" class="text-slate-200 text-xs space-y-1 mt-1 font-medium">
+                <li>• Current physiological telemetry matches the patient's personal healthy baseline with zero acute variances.</li>
+              </ul>
+            </div>
+
+            <!-- Personal Baseline Comparison Matrix -->
+            <div class="p-3.5 bg-slate-950/90 rounded-2xl border border-white/10 space-y-2 mt-3">
+              <div class="flex items-center justify-between">
+                <strong class="text-slate-300 uppercase font-bold text-[10px] flex items-center gap-1.5" id="lbl-baseline-head">
+                  <span>📊</span> <span>Personal Baseline Comparison</span>
+                </strong>
+                <span class="text-[9px] text-slate-400 font-mono">Reference Norms</span>
+              </div>
+              <div class="overflow-x-auto rounded-xl border border-white/5">
+                <table class="w-full text-left text-[11px]">
+                  <thead class="bg-slate-900/80 text-slate-400 uppercase text-[9px] border-b border-white/10">
+                    <tr>
+                      <th class="p-2">Vital Sign</th>
+                      <th class="p-2">Current</th>
+                      <th class="p-2">Baseline</th>
+                      <th class="p-2">Variance / Trend</th>
+                    </tr>
+                  </thead>
+                  <tbody id="baseline-comparison-tbody" class="divide-y divide-white/5 text-slate-200 font-medium">
+                    <tr><td class="p-2 font-bold">Blood Pressure</td><td id="base-val-bp" class="p-2 font-mono">120/80</td><td class="p-2 text-slate-400">118/78</td><td id="base-status-bp" class="p-2 text-emerald-400 font-bold">🟢 Normal (→ 0)</td></tr>
+                    <tr><td class="p-2 font-bold">Heart Rate</td><td id="base-val-hr" class="p-2 font-mono">72 BPM</td><td class="p-2 text-slate-400">70 BPM</td><td id="base-status-hr" class="p-2 text-emerald-400 font-bold">🟢 Stable (+2 BPM)</td></tr>
+                    <tr><td class="p-2 font-bold">Oxygen SpO2</td><td id="base-val-spo2" class="p-2 font-mono">98%</td><td class="p-2 text-slate-400">98%</td><td id="base-status-spo2" class="p-2 text-emerald-400 font-bold">🟢 Optimal (0%)</td></tr>
+                    <tr><td class="p-2 font-bold">Temperature</td><td id="base-val-temp" class="p-2 font-mono">98.6°F</td><td class="p-2 text-slate-400">98.4°F</td><td id="base-status-temp" class="p-2 text-emerald-400 font-bold">🟢 Normal (+0.2°F)</td></tr>
+                    <tr><td class="p-2 font-bold">Blood Sugar</td><td id="base-val-sugar" class="p-2 font-mono">110 mg/dL</td><td class="p-2 text-slate-400">105 mg/dL</td><td id="base-status-sugar" class="p-2 text-emerald-400 font-bold">🟢 Euglycemic (+5)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Environmental Stress Card -->
+            <div class="p-3.5 bg-slate-950/80 rounded-2xl border border-cyan-500/30 space-y-1.5 mt-3">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase text-cyan-300 flex items-center gap-1.5">
+                  <span>🌤️</span> <span>Local Environmental Context</span>
+                </span>
+                <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">Live Sensor Telemetry</span>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-[11px]">
+                <div class="p-2 bg-slate-900 rounded-xl border border-white/5">
+                  <span class="text-slate-400 text-[9px] uppercase block font-semibold">Ambient Temp</span>
+                  <strong class="text-white font-mono text-xs block mt-0.5">31.8°C <span class="text-slate-400 text-[10px]">(89.2°F)</span></strong>
+                </div>
+                <div class="p-2 bg-slate-900 rounded-xl border border-white/5">
+                  <span class="text-slate-400 text-[9px] uppercase block font-semibold">Humidity</span>
+                  <strong class="text-white font-mono text-xs block mt-0.5">62%</strong>
+                </div>
+                <div class="p-2 bg-slate-900 rounded-xl border border-white/5">
+                  <span class="text-slate-400 text-[9px] uppercase block font-semibold">Heat Stress</span>
+                  <strong class="text-amber-400 font-bold text-[11px] block mt-0.5">Moderate (Hydrate)</strong>
+                </div>
+                <div class="p-2 bg-slate-900 rounded-xl border border-white/5">
+                  <span class="text-slate-400 text-[9px] uppercase block font-semibold">Air Quality (AQI)</span>
+                  <strong class="text-emerald-400 font-mono text-xs block mt-0.5">54 (Good)</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clinical Findings & Recommendations -->
+            <div class="space-y-3 pt-3 text-xs">
+              <div class="p-3 bg-slate-950/80 rounded-xl border border-white/10">
+                <strong class="text-emerald-400 block uppercase font-bold text-[10px]" id="lbl-findings-head">Clinical Findings</strong>
+                <ul id="ai-findings-list" class="text-slate-300 space-y-1 mt-1">
+                  <li>• All baseline physiological biomarkers (BP, SpO2, Pulse, Temp, Sugar) are in optimal reference limits.</li>
+                </ul>
+              </div>
+
+              <div class="p-3 bg-slate-950/80 rounded-xl border border-white/10">
+                <strong class="text-teal-400 block uppercase font-bold text-[10px]" id="lbl-recs-head">Actionable Guidance & Preventive Steps</strong>
+                <ul id="ai-recs-list" class="text-slate-300 space-y-1 mt-1">
+                  <li>• Maintain routine daily hydration, balanced low-sodium diet, and periodic weekly logging.</li>
+                </ul>
+              </div>
+
+              <div class="p-3 bg-slate-950/80 rounded-xl border border-white/10">
+                <strong class="text-indigo-400 block uppercase font-bold text-[10px]" id="lbl-action-head">Suggested Next Action</strong>
+                <p id="ai-action-text" class="text-slate-300 font-medium mt-0.5">Continue routine preventive health monitoring</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Non-Diagnosis Legal Disclaimer -->
+          <div class="p-3 bg-slate-900/90 rounded-xl border border-white/10 text-[10px] text-slate-400 leading-relaxed" id="lbl-ai-disclaimer">
+            ⚠️ <strong>Clinical Notice:</strong> This application provides informational decision-support only and is not a replacement for professional medical diagnosis or emergency services.
+          </div>
+        </div>
+
+        </div>
+
+      <!-- ROW 2: LOCATION & NEAREST SUITABLE HOSPITAL -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mt-6">
+        <!-- SECTION 3: MY CURRENT LOCATION -->
+        <div id="sec-location" class="p-6 sm:p-8 rounded-3xl glass-card border border-teal-500/30 shadow-xl space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <h3 class="font-black text-white text-lg flex items-center gap-2">
+              <span class="p-2 rounded-xl bg-teal-500/20 text-teal-400">3</span>
+              <span id="lbl-sec3-title">My Current Location & Area Map</span>
+            </h3>
+            <button onclick="requestUserLocation()" class="px-3 py-1 bg-slate-900 hover:bg-slate-800 text-teal-300 rounded-lg text-xs font-bold border border-white/10 cursor-pointer flex items-center gap-1.5 shadow-sm transition-all" id="btn-refresh-gps">
+              <span>🔄</span>
+              <span id="lbl-refresh-text">Refresh GPS</span>
+            </button>
+          </div>
+
+          <div class="space-y-3.5 text-xs">
+            <!-- Professional Location Status Card -->
+            <div class="p-4 sm:p-5 bg-slate-950/90 rounded-2xl border border-teal-500/30 space-y-3 shadow-md" id="location-status-card">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-black uppercase tracking-wider text-teal-300 flex items-center gap-1.5" id="lbl-status-card-head">
+                  <span>📍</span> <span>YOUR CURRENT LOCATION</span>
+                </span>
+                <span id="loc-indicator-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-400 border border-white/10">
+                  ● Location Inactive
+                </span>
+              </div>
+
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase font-bold block" id="lbl-loc-detected-title">Detected Locality / Address</span>
+                <strong id="loc-detected-address" class="text-white font-bold text-sm block mt-0.5 leading-snug">
+                  Location not detected yet. Click "Use My Current Location" below.
+                </strong>
+              </div>
+
+              <!-- Coordinates Grid (Lat, Long, Accuracy) -->
+              <div class="grid grid-cols-3 gap-2 pt-1 text-center">
+                <div class="p-2.5 bg-slate-900/90 rounded-xl border border-white/5 shadow-inner">
+                  <span class="text-[9px] text-slate-400 uppercase font-bold block" id="lbl-latitude">Latitude</span>
+                  <strong id="loc-lat-text" class="text-white font-mono text-xs block mt-0.5">--</strong>
+                </div>
+                <div class="p-2.5 bg-slate-900/90 rounded-xl border border-white/5 shadow-inner">
+                  <span class="text-[9px] text-slate-400 uppercase font-bold block" id="lbl-longitude">Longitude</span>
+                  <strong id="loc-lng-text" class="text-white font-mono text-xs block mt-0.5">--</strong>
+                </div>
+                <div class="p-2.5 bg-slate-900/90 rounded-xl border border-white/5 shadow-inner">
+                  <span class="text-[9px] text-slate-400 uppercase font-bold block" id="lbl-accuracy">Accuracy</span>
+                  <strong id="loc-acc-text" class="text-emerald-400 font-mono text-xs block mt-0.5">--</strong>
+                </div>
+              </div>
+
+              <!-- Action Buttons: Use Location + Recenter -->
+              <div class="flex items-center gap-2 pt-1">
+                <button
+                  type="button"
+                  onclick="requestUserLocation()"
+                  class="flex-1 py-3 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-lg shadow-teal-600/20 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer border border-teal-400/30"
+                  id="btn-detect-gps"
+                >
+                  <span>📍</span>
+                  <span id="lbl-btn-detect-gps">Use My Current Location</span>
+                </button>
+
+                <button
+                  type="button"
+                  onclick="recenterMapOnUser()"
+                  class="px-3.5 py-3 bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white font-bold text-xs rounded-xl border border-white/10 transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
+                  id="btn-recenter-map"
+                  title="Recenter Map on Current Location"
+                >
+                  <span>🎯</span>
+                  <span class="hidden sm:inline">Recenter</span>
+                </button>
+              </div>
+
+              <!-- Status Feedback Subtext -->
+              <div class="text-[11px] text-slate-400 font-medium flex items-center gap-1.5">
+                <span id="gps-spinner" class="hidden animate-spin">⏳</span>
+                <span id="loc-status-text">Click "Use My Current Location" to query GPS and find nearest hospitals</span>
+              </div>
+
+              <!-- GPS Error Notice Banner with Try Again Button -->
+              <div id="gps-error-banner" class="p-3.5 bg-red-950/80 border border-red-500/40 rounded-xl text-red-200 text-xs hidden space-y-2">
+                <div>
+                  <strong class="block text-red-300 font-bold" id="gps-error-title">Location Access Required</strong>
+                  <p id="gps-error-msg" class="text-[11px] leading-relaxed mt-0.5">Location access was denied. Please allow location permission in your browser to find nearby hospitals.</p>
+                </div>
+                <button
+                  type="button"
+                  onclick="requestUserLocation()"
+                  class="px-3.5 py-1.5 bg-red-700 hover:bg-red-600 text-white rounded-lg text-xs font-bold transition-all cursor-pointer shadow-sm"
+                >
+                  🔄 Try Again
+                </button>
+              </div>
+            </div>
+
+            <!-- Leaflet Interactive Map & 3 km Radius Circle Container -->
+            <div class="space-y-1.5 pt-1">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-300 font-bold flex items-center gap-1.5">
+                  <span>🗺️</span> <span>Live Interactive Map & 3 km Perimeter</span>
+                </span>
+                <span class="text-[10px] text-teal-400 font-mono">OpenStreetMap • Leaflet</span>
+              </div>
+              <div id="location-map" class="w-full h-72 sm:h-80 rounded-2xl overflow-hidden border border-teal-500/30 shadow-inner z-10"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: NEAREST SUITABLE HOSPITAL & NEARBY MEDICAL HELP -->
+        <div id="sec-hospital" class="p-6 sm:p-8 rounded-3xl glass-card border border-emerald-500/40 shadow-xl space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <h3 class="font-black text-white text-lg flex items-center gap-2">
+              <span class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400">4</span>
+              <span id="lbl-sec4-title">Nearest Suitable Hospital & Medical Help</span>
+            </h3>
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-black uppercase" id="lbl-sec4-tag">
+              Required Facilities → Distance
+            </span>
+          </div>
+
+          <!-- Emergency Facility Requirement Header Banner -->
+          <div id="emergency-requirement-banner" class="p-3.5 bg-slate-950/80 rounded-2xl border border-emerald-500/30 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase text-slate-400" id="lbl-detected-emergency-title">Detected Emergency Protocol:</span>
+              <span id="detected-emergency-badge" class="px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 text-[10px] font-black">
+                Chest Pain (Cardiac Alert)
+              </span>
+            </div>
+            <p id="detected-emergency-reqs" class="text-xs text-slate-300">
+              <strong>Required Medical Facilities:</strong> Emergency Department • Cardiology / Cath Lab • ICU / CCU Care
+            </p>
+          </div>
+
+          <!-- NEAREST SUITABLE HOSPITAL FEATURE CARD -->
+          <div id="nearest-suitable-hospital-card" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-emerald-950/30 to-slate-950 border-2 border-emerald-400/60 shadow-2xl shadow-emerald-500/10 space-y-3">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500 text-slate-950 font-black text-[10px] uppercase shadow-md animate-pulse" id="badge-nearest-suitable">
+                  <span>✨</span> <span id="lbl-nearest-suitable-badge">NEAREST SUITABLE HOSPITAL</span>
+                </span>
+                <h4 class="font-black text-white text-base sm:text-lg mt-1.5" id="suitable-hospital-name">
+                  Detect your location to find nearest suitable hospital
+                </h4>
+                <p class="text-xs text-slate-300 mt-0.5 line-clamp-2" id="suitable-hospital-address">
+                  Location coordinates required for distance and facility evaluation
+                </p>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <span class="text-base sm:text-xl font-black text-emerald-400 block font-mono" id="suitable-hospital-dist">-- km away</span>
+                <span class="text-[10px] font-bold text-slate-400 block" id="suitable-hospital-eta">ETA --</span>
+              </div>
+            </div>
+
+            <!-- Available Facilities Badges -->
+            <div>
+              <span class="text-[10px] font-bold text-slate-400 uppercase block mb-1.5" id="lbl-available-facs">Available Required Facilities:</span>
+              <div class="flex flex-wrap gap-1.5" id="suitable-hospital-facilities-pills">
+                <span class="px-2 py-0.5 rounded-lg bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">✓ 24x7 Emergency</span>
+                <span class="px-2 py-0.5 rounded-lg bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">✓ Cardiology / Cath Lab</span>
+                <span class="px-2 py-0.5 rounded-lg bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">✓ ICU Critical Care</span>
+                <span class="px-2 py-0.5 rounded-lg bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">✓ 24x7 Oxygen</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons & Ambulance Transport Note -->
+            <div class="pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <p class="text-[11px] text-slate-400" id="lbl-ambulance-dispatch-note">
+                🚑 <strong>Ambulance Transport:</strong> 108 Emergency Ambulance will transport patient to this hospital.
+              </p>
+              <div class="flex items-center gap-2 flex-shrink-0">
+                <a
+                  id="btn-suitable-directions"
+                  href="https://maps.google.com"
+                  target="_blank"
+                  class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-md transition-all flex items-center gap-1.5"
+                >
+                  <span>🧭</span> <span id="lbl-btn-get-directions">GET DIRECTIONS</span>
+                </a>
+                <a
+                  id="btn-suitable-call"
+                  href="tel:108"
+                  class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-black text-xs shadow-md transition-all flex items-center gap-1.5"
+                >
+                  <span>📞</span> <span id="lbl-btn-call-hospital">CALL HOSPITAL</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Radius Expansion Banner (Shown if 0 found in 3km or user wishes to expand) -->
+          <div id="radius-expansion-box" class="p-3.5 bg-slate-950/90 rounded-2xl border border-teal-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="space-y-0.5">
+              <span class="text-xs text-slate-300 font-medium" id="lbl-search-radius-msg">
+                Search Radius: <strong class="text-emerald-400" id="current-radius-text">3 km</strong> around your GPS location.
+              </span>
+            </div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                onclick="searchWithCustomRadius(3.0)"
+                class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-bold text-[11px] hover:bg-emerald-500 transition-all cursor-pointer"
+                id="btn-radius-3k"
+              >
+                3 km (Default)
+              </button>
+              <button
+                type="button"
+                onclick="searchWithCustomRadius(5.0)"
+                class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-200 font-bold text-[11px] hover:bg-slate-700 hover:text-white transition-all cursor-pointer border border-white/10"
+                id="btn-radius-5k"
+              >
+                🔍 Search 5 km
+              </button>
+              <button
+                type="button"
+                onclick="searchWithCustomRadius(10.0)"
+                class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-200 font-bold text-[11px] hover:bg-slate-700 hover:text-white transition-all cursor-pointer border border-white/10"
+                id="btn-radius-10k"
+              >
+                🔍 Search 10 km
+              </button>
+            </div>
+          </div>
+
+          <!-- Other Nearby Facilities Grid -->
+          <div class="space-y-2 pt-2">
+            <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider" id="lbl-other-facilities-title">
+              Nearby Medical Facilities (Sorted by Distance: Nearest → Farthest)
+            </h5>
+            <div class="space-y-2.5" id="nearby-facilities-grid">
+              <!-- Populated by script.js -->
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+      <!-- ROW 3: EMERGENCY SOS SYSTEM & CLINICAL NOTES -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mt-6">
+        <!-- SECTION 5: EMERGENCY SOS -->
+        <div id="sec-emergency" class="p-6 sm:p-8 rounded-3xl glass-card border border-red-500/40 shadow-xl space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-red-500/30">
+            <h3 class="font-black text-white text-lg flex items-center gap-2">
+              <span class="p-2 rounded-xl bg-red-500/20 text-red-400">5</span>
+              <span id="lbl-sec5-title">Emergency SOS System</span>
+            </h3>
+            <span class="text-[10px] uppercase font-black px-2.5 py-0.5 rounded bg-red-500/20 text-red-300" id="lbl-sos-priority">High Priority</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <label class="block font-bold text-slate-300 uppercase text-[10px]" id="lbl-crisis-type">Select Crisis Type:</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <button type="button" onclick="selectEmergencyCondition('cardiac')" class="p-2.5 bg-slate-900 border border-white/10 hover:border-red-500 rounded-xl text-left text-xs font-bold cursor-pointer" id="btn-crisis-heart">🫀 Chest Pain</button>
+              <button type="button" onclick="selectEmergencyCondition('breathing')" class="p-2.5 bg-slate-900 border border-white/10 hover:border-red-500 rounded-xl text-left text-xs font-bold cursor-pointer" id="btn-crisis-breath">💨 Breathing</button>
+              <button type="button" onclick="selectEmergencyCondition('trauma')" class="p-2.5 bg-slate-900 border border-white/10 hover:border-red-500 rounded-xl text-left text-xs font-bold cursor-pointer" id="btn-crisis-fall">🩹 Fall / Trauma</button>
+              <button type="button" onclick="selectEmergencyCondition('convulsion')" class="p-2.5 bg-slate-900 border border-white/10 hover:border-red-500 rounded-xl text-left text-xs font-bold cursor-pointer" id="btn-crisis-fever">🔥 High Fever</button>
+              <button type="button" onclick="selectEmergencyCondition('general')" class="p-2.5 bg-slate-900 border border-white/10 hover:border-red-500 rounded-xl text-left text-xs font-bold cursor-pointer" id="btn-crisis-general">🛡️ General SOS</button>
+            </div>
+
+            <!-- Red SOS Trigger Button -->
+            <button
+              type="button"
+              onclick="triggerEmergencySOS()"
+              class="w-full py-4 bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 hover:to-rose-600 text-white font-black text-sm rounded-2xl shadow-xl shadow-red-600/30 active:scale-98 transition-all border border-red-400/40 cursor-pointer"
+              id="btn-trigger-sos"
+            >
+              🚨 CREATE EMERGENCY ALERT RECORD NOW
+            </button>
+
+            <!-- Emergency Record Box -->
+            <div id="sos-log-details" class="p-3 bg-slate-950 rounded-xl border border-red-500/30 hidden">
+              <strong class="text-red-400 block text-[10px] uppercase font-bold" id="lbl-logged-alert">Logged Alert Record</strong>
+              <p id="sos-log-summary" class="text-slate-300 text-xs mt-0.5 font-mono"></p>
+            </div>
+
+            <p class="text-[10px] text-slate-400" id="lbl-sos-footer">
+              * Creates an emergency alert record with available GPS coordinates. Dial national <strong>108</strong> for ambulance transport.
+            </p>
+          </div>
+        </div>
+
+        <!-- SECTION 6: CLINICAL NOTES (HEALTHCARE WORKER) -->
+        <div class="p-6 sm:p-8 rounded-3xl glass-card border border-indigo-500/30 shadow-xl space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <h3 class="font-black text-white text-lg flex items-center gap-2">
+              <span class="p-2 rounded-xl bg-indigo-500/20 text-indigo-400">6</span>
+              <span id="lbl-sec6-title">Clinical Notes (ASHA / Worker)</span>
+            </h3>
+            <span class="text-[10px] font-bold text-slate-400 uppercase" id="lbl-sec6-tag">Provider Notes</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-300 mb-1" id="lbl-note-obs">Clinical Observations</label>
+              <textarea id="note-observations" rows="2" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-medium focus:ring-2 focus:ring-indigo-500">Patient reports feeling energetic with no acute complaints. General appearance is healthy and alert.</textarea>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-300 mb-1" id="lbl-note-sym">Reported Symptoms</label>
+              <input type="text" id="note-symptoms" value="No chest pain, dyspnea, or dizziness noted during current encounter." class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-medium focus:ring-2 focus:ring-indigo-500" />
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-300 mb-1" id="lbl-note-assess">Initial Assessment</label>
+              <input type="text" id="note-assessment" value="Hemodynamically stable with normal cardiopulmonary vitals and euglycemic baseline." class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-medium focus:ring-2 focus:ring-indigo-500" />
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-300 mb-1" id="lbl-note-follow">Recommended Follow-up</label>
+              <input type="text" id="note-followup" value="Next routine vitals checkup in 14 days via village ASHA worker or at local Primary Health Centre (PHC)." class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-white font-medium focus:ring-2 focus:ring-indigo-500" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Step Navigation Action -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <button
+          onclick="setStep(1)"
+          class="w-full sm:w-auto px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs rounded-2xl border border-white/10 cursor-pointer"
+          id="btn-back-step1"
+        >
+          ← BACK TO STEP 1 (REGISTRATION)
+        </button>
+
+        <button
+          onclick="handleProceedToReport()"
+          class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 text-white font-black text-sm rounded-2xl shadow-xl shadow-emerald-600/30 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer border border-emerald-400/40"
+        >
+          <span id="btn-submit-step2">NEXT → GENERATE HEALTH REPORT</span>
+          <span>➔</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- STEP 3: DOCTOR-FRIENDLY COMPLETE HEALTH REPORT -->
+    <!-- ======================================================================= -->
+    <div id="step-3-view" class="step-pane max-w-4xl mx-auto space-y-6 hidden animate-fade-in">
+      
+      <!-- Top Actions Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print">
+        <div>
+          <span class="text-[10px] uppercase font-black px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" id="lbl-step3-badge">
+            Step 3 of 3: Clinical Diagnostic Report
+          </span>
+          <h2 class="text-2xl font-black text-white mt-1" id="lbl-step3-title">Medical Officer & Doctor Diagnostic Summary</h2>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button
+            onclick="triggerPrintReport()"
+            class="px-5 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 text-white font-extrabold text-xs sm:text-sm rounded-2xl shadow-xl shadow-emerald-600/30 flex items-center gap-2 cursor-pointer active:scale-95 transition-all border border-emerald-400/40"
+          >
+            <span>🖨️</span>
+            <span id="btn-print-report">PRINT HEALTH REPORT (A4)</span>
+          </button>
+          <button
+            onclick="setStep(2)"
+            class="px-4 py-3 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs rounded-2xl border border-white/10 cursor-pointer"
+            id="btn-back-step2"
+          >
+            ← Back to Services
+          </button>
+        </div>
+      </div>
+
+      <!-- DEDICATED DOCTOR REPORT SHEET (A4 PRINTABLE CONTAINER) -->
+      <div id="step-3-container" class="p-6 sm:p-8 bg-slate-950 rounded-3xl border border-white/20 shadow-2xl space-y-6 text-slate-100">
+        
+        <!-- REPORT HEADER -->
+        <div class="pb-4 border-b border-white/15 flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-widest text-emerald-400 block" id="lbl-rep-abdm">
+              Ayushman Bharat Digital Health (ABDM) • Primary Healthcare Record
+            </span>
+            <h1 class="text-2xl font-black text-white mt-0.5" id="lbl-rep-title">RURAL HEALTH GUARDIAN CLINICAL DIAGNOSTIC SUMMARY</h1>
+            <p class="text-xs text-slate-400" id="lbl-rep-sub">Standardized Encounter Report for Attending Physicians & Primary Health Centres</p>
+          </div>
+          <div class="text-left md:text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-time-head">Encounter Timestamp</span>
+            <strong id="rep-timestamp" class="text-white text-xs font-mono">30 Aug 2026 at 12:30 PM</strong>
+          </div>
+        </div>
+
+        <!-- 1. PATIENT INFORMATION -->
+        <div class="space-y-2">
+          <h3 class="text-xs font-black uppercase tracking-wider text-emerald-400" id="lbl-rep-sec1">1. Patient Demographics & Profile</h3>
+          <div class="p-4 bg-slate-900/90 rounded-2xl border border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-name">Full Name</span>
+              <strong id="rep-patient-name" class="text-white font-extrabold text-sm block">--</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-age-gender">Age / Gender</span>
+              <strong id="rep-patient-age-gender" class="text-white font-bold block">--</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-phone">Phone Number</span>
+              <strong id="rep-patient-phone" class="text-white font-bold block">--</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-village">Village / District / State</span>
+              <strong id="rep-patient-village-dist" class="text-white font-bold block">--</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-abha">ABHA Health ID</span>
+              <strong id="rep-patient-abha" class="text-emerald-400 font-mono block">--</strong>
+            </div>
+            <div class="sm:col-span-3">
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-emergency">Emergency Contact</span>
+              <strong id="rep-patient-emergency" class="text-white font-bold block">--</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. RECORDED VITALS & PERSONAL BASELINE MATRIX -->
+        <div class="space-y-2">
+          <h3 class="text-xs font-black uppercase tracking-wider text-emerald-400" id="lbl-rep-sec2">2. Recorded Physiological Vitals & Personal Baseline Matrix</h3>
+          <div class="overflow-x-auto rounded-xl border border-white/10">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-900 text-slate-300 uppercase text-[10px] font-bold border-b border-white/10">
+                <tr>
+                  <th class="p-3" id="th-rep-param">Parameter</th>
+                  <th class="p-3" id="th-rep-val">Recorded Value</th>
+                  <th class="p-3">Personal Baseline</th>
+                  <th class="p-3" id="th-rep-status">Clinical Status / Variance</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/5 bg-slate-950/80 font-medium">
+                <tr>
+                  <td class="p-3 font-bold text-white" id="td-rep-bp-lbl">Blood Pressure (NIBP)</td>
+                  <td id="rep-bp-val" class="p-3 text-white font-black text-sm">120 / 80 mmHg</td>
+                  <td class="p-3 text-slate-400 font-mono">118 / 78 mmHg</td>
+                  <td id="rep-bp-status" class="p-3 text-slate-300">Normotensive (Optimal MAP 93.3 mmHg)</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-white" id="td-rep-hr-lbl">Heart Rate (Pulse)</td>
+                  <td id="rep-hr-val" class="p-3 text-white font-black text-sm">72 BPM</td>
+                  <td class="p-3 text-slate-400 font-mono">70 BPM</td>
+                  <td id="rep-hr-status" class="p-3 text-slate-300">Normal Sinus Rhythm (60-100 BPM)</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-white" id="td-rep-spo2-lbl">Blood Oxygen Saturation (SpO2)</td>
+                  <td id="rep-spo2-val" class="p-3 text-emerald-400 font-black text-sm">98%</td>
+                  <td class="p-3 text-slate-400 font-mono">98%</td>
+                  <td id="rep-spo2-status" class="p-3 text-slate-300">Normoxic (Room Air Saturation: 95-100%)</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-white" id="td-rep-temp-lbl">Body Temperature</td>
+                  <td id="rep-temp-val" class="p-3 text-white font-black text-sm">98.6°F (37.0°C)</td>
+                  <td class="p-3 text-slate-400 font-mono">98.4°F</td>
+                  <td id="rep-temp-status" class="p-3 text-slate-300">Normothermic (97.7°F – 99.5°F)</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-white" id="td-rep-sugar-lbl">Blood Glucose (Random)</td>
+                  <td id="rep-sugar-val" class="p-3 text-white font-black text-sm">110 mg/dL</td>
+                  <td class="p-3 text-slate-400 font-mono">105 mg/dL</td>
+                  <td id="rep-sugar-status" class="p-3 text-slate-300">Euglycemic Baseline (70 - 140 mg/dL)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Environmental Context in Report -->
+          <div class="p-3 bg-slate-900/80 rounded-xl border border-white/5 text-[11px] text-slate-300 flex flex-wrap items-center justify-between gap-2">
+            <span><strong>Ambient Environment:</strong> 31.8°C (89.2°F), 62% RH</span>
+            <span><strong>Heat Index:</strong> Moderate Stress (Adequate Hydration Required)</span>
+            <span><strong>AQI:</strong> 54 (Good)</span>
+          </div>
+        </div>
+
+        <!-- 3. ASSESSMENT SUMMARY -->
+        <div class="space-y-2">
+          <h3 class="text-xs font-black uppercase tracking-wider text-emerald-400" id="lbl-rep-sec3">3. AI Clinical Decision Support Assessment</h3>
+          <div class="p-4 bg-slate-900/90 rounded-2xl border border-white/10 space-y-3 text-xs">
+            <div class="flex items-center gap-4">
+              <div>
+                <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-risk-head">Assessed Risk Level</span>
+                <span id="rep-risk-level" class="px-2.5 py-0.5 rounded-full font-black text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">LOW RISK</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-stability-head">Physiological Stability Score</span>
+                <strong id="rep-stability-score" class="text-white font-black text-sm">100 / 100</strong>
+              </div>
+            </div>
+
+            <div>
+              <strong class="text-slate-300 text-[10px] uppercase font-bold block" id="lbl-rep-findings-head">Key Findings:</strong>
+              <ul id="rep-findings-text" class="text-slate-300 mt-1 space-y-0.5">
+                <li>• All baseline physiological biomarkers (BP, SpO2, Pulse, Temp, Sugar) are in optimal reference limits.</li>
+              </ul>
+            </div>
+
+            <div>
+              <strong class="text-slate-300 text-[10px] uppercase font-bold block" id="lbl-rep-recs-head">Recommendations:</strong>
+              <ul id="rep-recs-text" class="text-slate-300 mt-1 space-y-0.5">
+                <li>• Maintain routine daily hydration, balanced low-sodium diet, and periodic weekly logging.</li>
+              </ul>
+            </div>
+
+            <div>
+              <strong class="text-slate-300 text-[10px] uppercase font-bold block" id="lbl-rep-action-head">Suggested Next Action:</strong>
+              <p id="rep-action-text" class="text-slate-300 mt-0.5">Continue routine preventive health monitoring</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. CLINICAL NOTES -->
+        <div class="space-y-2">
+          <h3 class="text-xs font-black uppercase tracking-wider text-emerald-400" id="lbl-rep-sec4">4. Healthcare Worker & Clinical Notes</h3>
+          <div class="p-4 bg-slate-900/90 rounded-2xl border border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <strong class="text-slate-400 text-[10px] uppercase font-bold block" id="lbl-rep-note-obs">Observations:</strong>
+              <p id="rep-note-obs" class="text-slate-300 mt-0.5">Patient reports feeling energetic with no acute complaints. General appearance is healthy and alert.</p>
+            </div>
+            <div>
+              <strong class="text-slate-400 text-[10px] uppercase font-bold block" id="lbl-rep-note-sym">Reported Symptoms:</strong>
+              <p id="rep-note-sym" class="text-slate-300 mt-0.5">No chest pain, dyspnea, or dizziness noted during current encounter.</p>
+            </div>
+            <div>
+              <strong class="text-slate-400 text-[10px] uppercase font-bold block" id="lbl-rep-note-assess">Initial Assessment:</strong>
+              <p id="rep-note-assess" class="text-slate-300 mt-0.5">Hemodynamically stable with normal cardiopulmonary vitals and euglycemic baseline.</p>
+            </div>
+            <div>
+              <strong class="text-slate-400 text-[10px] uppercase font-bold block" id="lbl-rep-note-follow">Recommended Follow-up:</strong>
+              <p id="rep-note-follow" class="text-slate-300 mt-0.5">Next routine vitals checkup in 14 days via village ASHA worker or at local Primary Health Centre (PHC).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. LOCATION INFORMATION -->
+        <div class="space-y-2">
+          <h3 class="text-xs font-black uppercase tracking-wider text-emerald-400" id="lbl-rep-sec5">5. Geographic & Medical Facility Location</h3>
+          <div class="p-4 bg-slate-900/90 rounded-2xl border border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-loc-village">Village & District</span>
+              <strong id="rep-loc-village" class="text-white font-bold block">Location not detected</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-loc-gps">GPS Coordinates</span>
+              <strong id="rep-loc-gps" class="text-white font-mono text-[11px] block">Coordinates not acquired</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold" id="lbl-rep-loc-nearest">Nearest Selected Facility</span>
+              <strong id="rep-loc-nearest-fac" class="text-emerald-400 font-bold block">Hospital search pending location</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. DOCTOR'S SIGNATURE BLOCK -->
+        <div class="pt-4 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-[10px] text-slate-400 space-y-0.5">
+            <p id="lbl-rep-verified">Verified through: <strong>Rural Health Guardian Clinical Portal</strong></p>
+            <p id="lbl-rep-phc-name">Affiliated Centre: <strong>Verified Rural Primary Health Centre (PHC)</strong></p>
+          </div>
+
+          <div class="w-56 text-center">
+            <div class="h-10 border-b border-dashed border-slate-600 flex items-end justify-center pb-1">
+              <span class="text-xs font-mono text-emerald-400 font-bold">Dr. S. Sharma (MBBS, DHO)</span>
+            </div>
+            <span class="text-[9px] text-slate-400 uppercase font-bold block mt-1" id="lbl-rep-sign">Attending Physician / Doctor Signature</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 no-print">
+        <button
+          onclick="setStep(2)"
+          class="w-full sm:w-auto px-6 py-3 bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs rounded-2xl border border-white/10 cursor-pointer"
+          id="btn-back-services"
+        >
+          ← Back to Health Services
+        </button>
+
+        <button
+          onclick="setStep(1)"
+          class="w-full sm:w-auto px-6 py-3 bg-emerald-700/60 hover:bg-emerald-600 text-white font-bold text-xs rounded-2xl border border-emerald-500/30 cursor-pointer"
+          id="btn-new-encounter"
+        >
+          🔄 Start New Patient Encounter
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 3. FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-slate-950/90 backdrop-blur-xl text-slate-400 py-6 px-4 border-t border-white/10 mt-12 text-xs no-print">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+      <div>
+        <p id="lbl-footer-text" class="font-semibold text-slate-300">Rural Health Guardian • Smart India Hackathon 2026 Presentation Edition</p>
+        <p class="text-[11px] text-slate-500 mt-0.5">AI-Powered Early Warning, Nearest Suitable Hospital Recommendation & Tele-Triage System</p>
+      </div>
+      <div class="flex items-center gap-3 text-xs">
+        <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono font-bold">🟢 v2.5.0 Production-Ready</span>
+        <a href="tel:108" class="text-red-400 font-bold hover:underline" id="lbl-footer-108">🚑 108 Ambulance</a>
+        <span>•</span>
+        <a href="tel:104" class="text-emerald-400 font-bold hover:underline" id="lbl-footer-104">📞 104 Health Helpline</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 4. FLOATING AI HEALTH AGENT WIDGET (24/7 INTERACTIVE ASSISTANT) -->
+  <!-- ========================================================================= -->
+  <div id="ai-agent-container" class="no-print">
+    <!-- Floating Action Button (FAB) -->
+    <button
+      id="ai-agent-fab"
+      onclick="toggleAIAgentChat()"
+      class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2.5 px-4 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs sm:text-sm rounded-full shadow-2xl shadow-emerald-500/40 border border-emerald-400/40 active:scale-95 transition-all cursor-pointer group"
+      title="Open AI Health Assistant"
+    >
+      <span class="text-lg animate-bounce">🤖</span>
+      <span id="lbl-fab-title" class="tracking-wide">AI Health Agent</span>
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+    </button>
+
+    <!-- Floating AI Chat Drawer / Window -->
+    <div
+      id="ai-agent-drawer"
+      class="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-50 w-[360px] sm:w-[420px] max-w-[94vw] h-[540px] max-h-[82vh] bg-slate-950/95 backdrop-blur-2xl rounded-3xl border border-teal-500/40 shadow-2xl flex flex-col justify-between overflow-hidden hidden transition-all duration-300 transform scale-95 origin-bottom-right"
+    >
+      <!-- Drawer Header -->
+      <div class="px-5 py-3.5 bg-gradient-to-r from-teal-950 via-slate-900 to-emerald-950 border-b border-teal-500/30 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-2xl bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-lg shadow-inner">
+            🤖
+          </div>
+          <div>
+            <h4 class="font-extrabold text-white text-xs sm:text-sm leading-none flex items-center gap-1.5">
+              <span id="lbl-agent-header-title">Guardian AI Assistant</span>
+              <span class="px-1.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 text-[9px] font-bold">24x7 Active</span>
+            </h4>
+            <p class="text-[10px] text-teal-300/80 mt-0.5" id="lbl-agent-header-subtitle">
+              Clinical guidance, triage & portal help
+            </p>
+          </div>
+        </div>
+
+        <button
+          onclick="toggleAIAgentChat()"
+          class="w-7 h-7 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-sm font-bold cursor-pointer transition-all"
+          title="Close"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Quick Suggestion Chips Carousel -->
+      <div class="px-4 py-2 bg-slate-900/60 border-b border-white/5 flex items-center gap-1.5 overflow-x-auto no-scrollbar text-[11px]">
+        <button id="ai-chip-vitals" onclick="askQuickPrompt('vitals')" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 whitespace-nowrap border border-white/5 font-medium cursor-pointer transition-all">
+          🩺 Analyze Vitals
+        </button>
+        <button id="ai-chip-bp" onclick="askQuickPrompt('bp')" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 whitespace-nowrap border border-white/5 font-medium cursor-pointer transition-all">
+          💡 High BP Advice
+        </button>
+        <button id="ai-chip-spo2" onclick="askQuickPrompt('spo2')" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-300 whitespace-nowrap border border-white/5 font-medium cursor-pointer transition-all">
+          🫁 SpO2 Guidance
+        </button>
+        <button id="ai-chip-hospital" onclick="askQuickPrompt('hospital')" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 whitespace-nowrap border border-white/5 font-medium cursor-pointer transition-all">
+          📍 Nearest Hospital
+        </button>
+        <button id="ai-chip-report" onclick="askQuickPrompt('report')" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-purple-300 whitespace-nowrap border border-white/5 font-medium cursor-pointer transition-all">
+          🖨️ Print Doctor Report
+        </button>
+      </div>
+
+      <!-- Messages History Area -->
+      <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs leading-relaxed">
+        <!-- Initial Welcoming Message -->
+        <div class="flex items-start gap-2.5">
+          <div class="w-6 h-6 rounded-full bg-teal-500/20 text-teal-300 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+            🤖
+          </div>
+          <div class="p-3.5 bg-slate-900/90 rounded-2xl rounded-tl-none border border-white/10 text-slate-200 shadow-md max-w-[88%] space-y-1.5" id="ai-welcome-box">
+            <p class="font-bold text-teal-300 text-[11px]" id="ai-welcome-title">Hello! I am your Rural Health Guardian AI Assistant. ✨</p>
+            <p class="text-[11px] text-slate-300" id="ai-welcome-desc">How can I help you today? You can ask about your vitals, emergency SOS steps, nearest hospitals, or how to generate doctor reports.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Bar & Voice Speech Support -->
+      <div class="p-3 bg-slate-900 border-t border-white/10">
+        <form onsubmit="handleAIChatSubmit(event)" class="flex items-center gap-2">
+          <input
+            type="text"
+            id="ai-chat-input"
+            placeholder="Type your health or navigation question..."
+            class="flex-1 px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-xl text-white placeholder:text-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500"
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            id="btn-ai-mic"
+            onclick="toggleSpeechRecognition()"
+            class="p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl border border-white/10 cursor-pointer transition-all"
+            title="Voice input"
+          >
+            🎤
+          </button>
+          <button
+            type="submit"
+            class="px-4 py-2.5 bg-teal-600 hover:bg-teal-500 text-white font-black text-xs rounded-xl shadow-md cursor-pointer transition-all active:scale-95"
+            id="btn-ai-send"
+          >
+            ➤
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script logic -->
+  <script src="script.js?v=2.5.0"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "@launchflow/agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "launchflow": "./bin/launchflow.js"
+  },
+  "scripts": {
+    "start": "node bin/launchflow.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#0B1B3D"/>
+  <!-- Solar Panel Grid in SOCIO Blue -->
+  <polygon points="12,42 22,22 42,22 52,42" fill="#0258A6" opacity="0.95"/>
+  <polygon points="16,40 24,24 31,24 24,40" fill="#0A74DA" opacity="0.8"/>
+  <polygon points="26,40 32,24 39,24 34,40" fill="#1C86EE" opacity="0.8"/>
+  <polygon points="36,40 40,24 48,24 44,40" fill="#0A74DA" opacity="0.8"/>
+  <line x1="12" y1="32" x2="52" y2="32" stroke="#FFFFFF" stroke-width="1.2" opacity="0.7"/>
+  <!-- Sun Burst in Solar Orange -->
+  <circle cx="48" cy="18" r="7" fill="#F36F21"/>
+  <circle cx="48" cy="18" r="10" stroke="#F36F21" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>
+  <!-- Base Ground Mount Line -->
+  <line x1="10" y1="46" x2="54" y2="46" stroke="#F36F21" stroke-width="3" stroke-linecap="round"/>
+</svg>

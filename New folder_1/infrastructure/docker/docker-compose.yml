@@ -1,0 +1,56 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: launchflow-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: launchflow
+      POSTGRES_PASSWORD: launchflow_secret
+      POSTGRES_DB: launchflow_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../deployment/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+
+  redis:
+    image: redis:7-alpine
+    container_name: launchflow-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  api:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/Dockerfile.api
+    container_name: launchflow-api
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      DATABASE_URL: postgresql://launchflow:launchflow_secret@postgres:5432/launchflow_db
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: launchflow_production_jwt_secret_key
+      ENCRYPTION_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+    depends_on:
+      - postgres
+      - redis
+
+  web:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/Dockerfile.web
+    container_name: launchflow-web
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
+  redis_data:

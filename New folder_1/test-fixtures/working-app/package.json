@@ -1,0 +1,9 @@
+{
+  "name": "working-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "start": "node -e \"console.log('App running on port ' + (process.env.PORT || 3000)); const http = require('http'); http.createServer((q,s)=>{s.writeHead(200,{'Content-Type':'text/html'});s.end('<h1>LaunchFlow Live App</h1>');}).listen(process.env.PORT||3000);\""
+  }
+}

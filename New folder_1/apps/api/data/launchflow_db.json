@@ -1,0 +1,1932 @@
+{
+  "users": {
+    "usr_demo_launchflow": {
+      "id": "usr_demo_launchflow",
+      "email": "demo@launchflow.app",
+      "name": "LaunchFlow Developer",
+      "passwordHash": "$2a$10$zmfWz.7gh87vjCEz3MRflOPeuQCmvDmAuB3Q/Cqna5HMYDFZ8jLH2",
+      "agentToken": "lft_dev_165828c702b0cb0f9d690147eb1373a2",
+      "createdAt": "2026-09-10T07:33:54.261Z"
+    },
+    "usr_0036f656-dbaf-4ed2-a8bb-20a990370f9e": {
+      "id": "usr_0036f656-dbaf-4ed2-a8bb-20a990370f9e",
+      "email": "usera_1789025649795@test.com",
+      "name": "User Alpha",
+      "passwordHash": "$2a$10$5gb5NQVxMz0PHjshiESvzumLk//yufnL4CxtNNW3jA0rcFzNbSe5y",
+      "agentToken": "lft_34a5e81ce0e0cd10851be08a3e3b1d05",
+      "createdAt": "2026-09-10T07:34:09.919Z"
+    },
+    "usr_60c6e0c4-b2bf-4322-87b8-04f73f13f487": {
+      "id": "usr_60c6e0c4-b2bf-4322-87b8-04f73f13f487",
+      "email": "userb_1789025649795@test.com",
+      "name": "User Beta",
+      "passwordHash": "$2a$10$ijJfdurN9X8dSmHN6pBLke9N.wX1PQ8QCEguLvhimvRpGWRi5i1pS",
+      "agentToken": "lft_9fe4e402f571421ba4aa22943488e2b9",
+      "createdAt": "2026-09-10T07:34:10.036Z"
+    },
+    "usr_4ea9b8b0-4b43-4f2d-9a09-765837858e70": {
+      "id": "usr_4ea9b8b0-4b43-4f2d-9a09-765837858e70",
+      "email": "usera_1789025771169@test.com",
+      "name": "User Alpha",
+      "passwordHash": "$2a$10$tMtaXOyoGdVbSMRzrK15quRjRqTz4TU44fWNzHY0ghozuidLZ.gsm",
+      "agentToken": "lft_f52f469a1d94c0aa9a0968c3bf64bdf6",
+      "createdAt": "2026-09-10T07:36:11.242Z"
+    },
+    "usr_19855f7f-af99-4912-998d-f0e7acdd2445": {
+      "id": "usr_19855f7f-af99-4912-998d-f0e7acdd2445",
+      "email": "userb_1789025771169@test.com",
+      "name": "User Beta",
+      "passwordHash": "$2a$10$59kGTycMeaOoFGqTy3wKGOT1O7FFaa1Hh.OfYsQlvINr0OhmXMec6",
+      "agentToken": "lft_c1cf6d19d327bec9020683ba9af7ab8b",
+      "createdAt": "2026-09-10T07:36:11.308Z"
+    }
+  },
+  "repositories": {},
+  "projects": {
+    "prj_b5ba7c76-dad2-444c-a213-f08d69353b60": {
+      "id": "prj_b5ba7c76-dad2-444c-a213-f08d69353b60",
+      "userId": "usr_demo_launchflow",
+      "name": "Broken Build Project",
+      "slug": "broken-build-project-7ccf74",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "node build.js",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "broken-build-project-7ccf74",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:33:54.442Z",
+      "updatedAt": "2026-09-10T07:33:54.443Z"
+    },
+    "prj_e1dd632c-c082-4483-9e38-17a46470c211": {
+      "id": "prj_e1dd632c-c082-4483-9e38-17a46470c211",
+      "userId": "usr_demo_launchflow",
+      "name": "Leak Project",
+      "slug": "leak-project-671690",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "leak-project-671690",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:33:54.477Z",
+      "updatedAt": "2026-09-10T07:33:54.477Z"
+    },
+    "prj_18c2e26e-ceec-4924-8888-4d52673605ad": {
+      "id": "prj_18c2e26e-ceec-4924-8888-4d52673605ad",
+      "userId": "usr_0036f656-dbaf-4ed2-a8bb-20a990370f9e",
+      "name": "Alpha Secret Project",
+      "slug": "alpha-secret-project-2b48cd",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "alpha-secret-project-2b48cd",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:34:10.039Z",
+      "updatedAt": "2026-09-10T07:34:10.039Z"
+    },
+    "prj_c3736f7a-8ec6-436b-8faf-b09ea4c8497e": {
+      "id": "prj_c3736f7a-8ec6-436b-8faf-b09ea4c8497e",
+      "userId": "usr_demo_launchflow",
+      "name": "Broken API App",
+      "slug": "broken-api-app-aa63c4",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "broken-api-app-aa63c4",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:34:10.063Z",
+      "updatedAt": "2026-09-10T07:34:10.063Z"
+    },
+    "prj_c7ca5b99-1ab9-4b2e-8cb3-9cf3dc884b7d": {
+      "id": "prj_c7ca5b99-1ab9-4b2e-8cb3-9cf3dc884b7d",
+      "userId": "usr_demo_launchflow",
+      "name": "OneDrive Root App",
+      "slug": "onedrive-root-app-a9f356",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "echo \"Built in external sandbox\" > build.output",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "onedrive-root-app-a9f356",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:34:10.199Z",
+      "updatedAt": "2026-09-10T07:34:10.199Z"
+    },
+    "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb": {
+      "id": "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb",
+      "userId": "usr_demo_launchflow",
+      "name": "Production Working App",
+      "slug": "production-working-app-77e7ce",
+      "repositoryId": null,
+      "framework": "static-html",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "node build.js",
+      "startCommand": "echo \"Started\"",
+      "port": 3000,
+      "subdomain": "production-working-app-77e7ce",
+      "customDomain": null,
+      "status": "live",
+      "currentDeploymentId": "dpl_47fc6c76-7d7a-494c-a1aa-a17c6e3c987c",
+      "createdAt": "2026-09-10T07:36:10.167Z",
+      "updatedAt": "2026-09-10T07:36:10.561Z"
+    },
+    "prj_55587fa4-48d7-454c-908a-0357d310002c": {
+      "id": "prj_55587fa4-48d7-454c-908a-0357d310002c",
+      "userId": "usr_demo_launchflow",
+      "name": "Broken Build Project",
+      "slug": "broken-build-project-48fc82",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "node build.js",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "broken-build-project-48fc82",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:36:10.568Z",
+      "updatedAt": "2026-09-10T07:36:10.568Z"
+    },
+    "prj_c82dc9af-00bd-42f1-9bca-d28c8c6d90ef": {
+      "id": "prj_c82dc9af-00bd-42f1-9bca-d28c8c6d90ef",
+      "userId": "usr_demo_launchflow",
+      "name": "Env Dependent App",
+      "slug": "env-dependent-app-b77e58",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "env-dependent-app-b77e58",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:36:10.771Z",
+      "updatedAt": "2026-09-10T07:36:10.771Z"
+    },
+    "prj_668c1f0a-8f07-47c4-83d0-c105878f9f28": {
+      "id": "prj_668c1f0a-8f07-47c4-83d0-c105878f9f28",
+      "userId": "usr_demo_launchflow",
+      "name": "Leak Project",
+      "slug": "leak-project-3cf0b3",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "leak-project-3cf0b3",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:36:10.795Z",
+      "updatedAt": "2026-09-10T07:36:10.795Z"
+    },
+    "prj_51e0d69d-9cd0-4742-99e4-44a7a48ae65f": {
+      "id": "prj_51e0d69d-9cd0-4742-99e4-44a7a48ae65f",
+      "userId": "usr_4ea9b8b0-4b43-4f2d-9a09-765837858e70",
+      "name": "Alpha Secret Project",
+      "slug": "alpha-secret-project-e294c4",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "alpha-secret-project-e294c4",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:36:11.310Z",
+      "updatedAt": "2026-09-10T07:36:11.310Z"
+    },
+    "prj_6927a9b1-025e-4705-a0fc-56046015415d": {
+      "id": "prj_6927a9b1-025e-4705-a0fc-56046015415d",
+      "userId": "usr_demo_launchflow",
+      "name": "Broken API App",
+      "slug": "broken-api-app-1e7e38",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "broken-api-app-1e7e38",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:36:11.319Z",
+      "updatedAt": "2026-09-10T07:36:11.319Z"
+    },
+    "prj_fe86b8eb-6cb9-411b-aae7-fd537e37d81d": {
+      "id": "prj_fe86b8eb-6cb9-411b-aae7-fd537e37d81d",
+      "userId": "usr_demo_launchflow",
+      "name": "OneDrive Root App",
+      "slug": "onedrive-root-app-e8b5c0",
+      "repositoryId": null,
+      "framework": "nextjs",
+      "language": "typescript",
+      "packageManager": "npm",
+      "buildCommand": "echo \"Built in external sandbox\" > build.output",
+      "startCommand": "npm start",
+      "port": 3000,
+      "subdomain": "onedrive-root-app-e8b5c0",
+      "customDomain": null,
+      "status": "pending",
+      "currentDeploymentId": null,
+      "createdAt": "2026-09-10T07:36:11.347Z",
+      "updatedAt": "2026-09-10T07:36:11.347Z"
+    }
+  },
+  "deployments": {
+    "dpl_0df4dde8-bdaf-4e70-8818-b6c5200d7438": {
+      "id": "dpl_0df4dde8-bdaf-4e70-8818-b6c5200d7438",
+      "projectId": "prj_b5ba7c76-dad2-444c-a213-f08d69353b60",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "2d26fb84",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:33:54.446Z",
+      "updatedAt": "2026-09-10T07:33:54.446Z",
+      "liveAt": null
+    },
+    "dpl_edcbb2d1-2dab-48a4-91e9-5747a1622d2d": {
+      "id": "dpl_edcbb2d1-2dab-48a4-91e9-5747a1622d2d",
+      "projectId": "prj_e1dd632c-c082-4483-9e38-17a46470c211",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "14f67310",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:33:54.480Z",
+      "updatedAt": "2026-09-10T07:33:54.480Z",
+      "liveAt": null
+    },
+    "dpl_9bf4ed35-91e7-4c02-83a0-7f8fb00184c9": {
+      "id": "dpl_9bf4ed35-91e7-4c02-83a0-7f8fb00184c9",
+      "projectId": "prj_c3736f7a-8ec6-436b-8faf-b09ea4c8497e",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "c2a36d1e",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:34:10.064Z",
+      "updatedAt": "2026-09-10T07:34:10.064Z",
+      "liveAt": null
+    },
+    "dpl_144b78db-051a-47ac-a773-56e43c7410b1": {
+      "id": "dpl_144b78db-051a-47ac-a773-56e43c7410b1",
+      "projectId": "prj_c7ca5b99-1ab9-4b2e-8cb3-9cf3dc884b7d",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "4a62c766",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:34:10.201Z",
+      "updatedAt": "2026-09-10T07:34:10.202Z",
+      "liveAt": null
+    },
+    "dpl_47fc6c76-7d7a-494c-a1aa-a17c6e3c987c": {
+      "id": "dpl_47fc6c76-7d7a-494c-a1aa-a17c6e3c987c",
+      "projectId": "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb",
+      "version": 1,
+      "status": "live",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": "http://localhost:4000/live/production-working-app-77e7ce/",
+      "readinessScore": null,
+      "commitHash": "7454a0f5",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:36:10.172Z",
+      "updatedAt": "2026-09-10T07:36:10.560Z",
+      "liveAt": "2026-09-10T07:36:10.560Z"
+    },
+    "dpl_098dba5a-0cb5-4404-ae45-5d41db8b8483": {
+      "id": "dpl_098dba5a-0cb5-4404-ae45-5d41db8b8483",
+      "projectId": "prj_55587fa4-48d7-454c-908a-0357d310002c",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "cb4c2f4d",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:36:10.569Z",
+      "updatedAt": "2026-09-10T07:36:10.569Z",
+      "liveAt": null
+    },
+    "dpl_ec3852ec-efd6-42fb-808a-011e6c520e0b": {
+      "id": "dpl_ec3852ec-efd6-42fb-808a-011e6c520e0b",
+      "projectId": "prj_c82dc9af-00bd-42f1-9bca-d28c8c6d90ef",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "4ff0b8e0",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:36:10.772Z",
+      "updatedAt": "2026-09-10T07:36:10.772Z",
+      "liveAt": null
+    },
+    "dpl_255ba583-937a-438a-bcbd-fba474d0c615": {
+      "id": "dpl_255ba583-937a-438a-bcbd-fba474d0c615",
+      "projectId": "prj_668c1f0a-8f07-47c4-83d0-c105878f9f28",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "871b2f55",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:36:10.796Z",
+      "updatedAt": "2026-09-10T07:36:10.796Z",
+      "liveAt": null
+    },
+    "dpl_ca8c070f-6295-4362-9e5d-121cc2e76467": {
+      "id": "dpl_ca8c070f-6295-4362-9e5d-121cc2e76467",
+      "projectId": "prj_6927a9b1-025e-4705-a0fc-56046015415d",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "ca04317d",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:36:11.321Z",
+      "updatedAt": "2026-09-10T07:36:11.321Z",
+      "liveAt": null
+    },
+    "dpl_e93beb52-15e0-4fa3-9983-b50d8d48774b": {
+      "id": "dpl_e93beb52-15e0-4fa3-9983-b50d8d48774b",
+      "projectId": "prj_fe86b8eb-6cb9-411b-aae7-fd537e37d81d",
+      "version": 1,
+      "status": "pending",
+      "branch": "main",
+      "previewUrl": null,
+      "productionUrl": null,
+      "readinessScore": null,
+      "commitHash": "b231306f",
+      "commitMessage": "Deployment #1 via LaunchFlow",
+      "createdAt": "2026-09-10T07:36:11.350Z",
+      "updatedAt": "2026-09-10T07:36:11.350Z",
+      "liveAt": null
+    }
+  },
+  "builds": {
+    "bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b": {
+      "id": "bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b",
+      "projectId": "prj_b5ba7c76-dad2-444c-a213-f08d69353b60",
+      "deploymentId": "dpl_0df4dde8-bdaf-4e70-8818-b6c5200d7438",
+      "status": "failed",
+      "startedAt": "2026-09-10T07:33:54.458Z",
+      "completedAt": "2026-09-10T07:33:54.467Z",
+      "exitCode": null,
+      "durationMs": null,
+      "errorSummary": "Failed to create sandbox workspace: ENOENT: no such file or directory, lstat 'C:\\Users\\Akash\\OneDrive\\Documents\\awsmrw\\Medical\\SIH\\New folder_1\\apps\\api\\test-fixtures\\broken-build'",
+      "errorExplanation": {
+        "code": "GENERIC_RUNTIME_ISSUE",
+        "title": "Unexpected Execution Failure",
+        "whatHappened": "The build or startup command returned a non-zero exit code.",
+        "whyItBreaksInProduction": "The command terminated prematurely before the web server could start and respond to health checks.",
+        "recommendedFix": "Review the stdout/stderr build logs above to identify the root error, correct the configuration, and trigger a retest.",
+        "actionType": "update_config"
+      },
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b"
+    },
+    "bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3": {
+      "id": "bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3",
+      "projectId": "prj_e1dd632c-c082-4483-9e38-17a46470c211",
+      "deploymentId": "dpl_edcbb2d1-2dab-48a4-91e9-5747a1622d2d",
+      "status": "failed",
+      "startedAt": "2026-09-10T07:33:54.488Z",
+      "completedAt": "2026-09-10T07:33:54.494Z",
+      "exitCode": null,
+      "durationMs": null,
+      "errorSummary": "Failed to create sandbox workspace: ENOENT: no such file or directory, lstat 'C:\\Users\\Akash\\OneDrive\\Documents\\awsmrw\\Medical\\SIH\\New folder_1\\apps\\api\\test-fixtures\\localhost-leak'",
+      "errorExplanation": {
+        "code": "GENERIC_RUNTIME_ISSUE",
+        "title": "Unexpected Execution Failure",
+        "whatHappened": "The build or startup command returned a non-zero exit code.",
+        "whyItBreaksInProduction": "The command terminated prematurely before the web server could start and respond to health checks.",
+        "recommendedFix": "Review the stdout/stderr build logs above to identify the root error, correct the configuration, and trigger a retest.",
+        "actionType": "update_config"
+      },
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3"
+    },
+    "bld_a0300d16-13cb-437d-9728-e820fb00864a": {
+      "id": "bld_a0300d16-13cb-437d-9728-e820fb00864a",
+      "projectId": "prj_c7ca5b99-1ab9-4b2e-8cb3-9cf3dc884b7d",
+      "deploymentId": "dpl_144b78db-051a-47ac-a773-56e43c7410b1",
+      "status": "failed",
+      "startedAt": "2026-09-10T07:34:10.207Z",
+      "completedAt": "2026-09-10T07:34:10.212Z",
+      "exitCode": null,
+      "durationMs": null,
+      "errorSummary": "Failed to create sandbox workspace: ENOENT: no such file or directory, lstat 'C:\\Users\\Akash\\OneDrive\\Documents\\awsmrw\\Medical\\SIH\\New folder_1\\apps\\api\\test-fixtures\\working-app'",
+      "errorExplanation": {
+        "code": "GENERIC_RUNTIME_ISSUE",
+        "title": "Unexpected Execution Failure",
+        "whatHappened": "The build or startup command returned a non-zero exit code.",
+        "whyItBreaksInProduction": "The command terminated prematurely before the web server could start and respond to health checks.",
+        "recommendedFix": "Review the stdout/stderr build logs above to identify the root error, correct the configuration, and trigger a retest.",
+        "actionType": "update_config"
+      },
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_a0300d16-13cb-437d-9728-e820fb00864a"
+    },
+    "bld_ec10c489-fb9b-4b57-99de-374351117e89": {
+      "id": "bld_ec10c489-fb9b-4b57-99de-374351117e89",
+      "projectId": "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb",
+      "deploymentId": "dpl_47fc6c76-7d7a-494c-a1aa-a17c6e3c987c",
+      "status": "succeeded",
+      "startedAt": "2026-09-10T07:36:10.188Z",
+      "completedAt": "2026-09-10T07:36:10.423Z",
+      "exitCode": 0,
+      "durationMs": 191,
+      "errorSummary": null,
+      "errorExplanation": null,
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_ec10c489-fb9b-4b57-99de-374351117e89"
+    },
+    "bld_12e364ab-206c-4e85-9942-03aee628f6f0": {
+      "id": "bld_12e364ab-206c-4e85-9942-03aee628f6f0",
+      "projectId": "prj_55587fa4-48d7-454c-908a-0357d310002c",
+      "deploymentId": "dpl_098dba5a-0cb5-4404-ae45-5d41db8b8483",
+      "status": "failed",
+      "startedAt": "2026-09-10T07:36:10.573Z",
+      "completedAt": "2026-09-10T07:36:10.735Z",
+      "exitCode": 1,
+      "durationMs": 137,
+      "errorSummary": "Process exited with code 1",
+      "errorExplanation": {
+        "code": "MODULE_NOT_FOUND",
+        "title": "Missing Module: @auth/nextjs",
+        "whatHappened": "The build failed because code imports \"@auth/nextjs\", which is not installed or not listed in package.json.",
+        "whyItBreaksInProduction": "In development, packages might be globally installed or cached. In isolated production builds, only dependencies explicitly listed in dependencies or devDependencies are installed.",
+        "recommendedFix": "Run \"npm install @auth/nextjs\" in your project and commit package.json and package-lock.json.",
+        "actionType": "fix_code"
+      },
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_12e364ab-206c-4e85-9942-03aee628f6f0"
+    },
+    "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583": {
+      "id": "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583",
+      "projectId": "prj_668c1f0a-8f07-47c4-83d0-c105878f9f28",
+      "deploymentId": "dpl_255ba583-937a-438a-bcbd-fba474d0c615",
+      "status": "succeeded",
+      "startedAt": "2026-09-10T07:36:10.801Z",
+      "completedAt": "2026-09-10T07:36:11.114Z",
+      "exitCode": 0,
+      "durationMs": 300,
+      "errorSummary": null,
+      "errorExplanation": null,
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_00f350e2-e260-4f01-9621-d0e5d9b8d583"
+    },
+    "bld_25ecc260-8d9f-4d91-b26a-dc82d5484657": {
+      "id": "bld_25ecc260-8d9f-4d91-b26a-dc82d5484657",
+      "projectId": "prj_fe86b8eb-6cb9-411b-aae7-fd537e37d81d",
+      "deploymentId": "dpl_e93beb52-15e0-4fa3-9983-b50d8d48774b",
+      "status": "succeeded",
+      "startedAt": "2026-09-10T07:36:11.359Z",
+      "completedAt": "2026-09-10T07:36:11.536Z",
+      "exitCode": 0,
+      "durationMs": 153,
+      "errorSummary": null,
+      "errorExplanation": null,
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_25ecc260-8d9f-4d91-b26a-dc82d5484657"
+    }
+  },
+  "buildLogs": {
+    "bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b": [
+      {
+        "id": "log_6679e90c-63af-4b17-8fda-9e64d86a912b",
+        "buildId": "bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b",
+        "timestamp": "2026-09-10T07:33:54.460Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Preparing isolated environment for build bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b at C:\\LaunchFlow\\sandboxes\\bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b..."
+      },
+      {
+        "id": "log_65a64efc-e2d3-43d1-aa48-63cd06dafccb",
+        "buildId": "bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b",
+        "timestamp": "2026-09-10T07:33:54.461Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Copying source repository to isolated workspace..."
+      },
+      {
+        "id": "log_23ca6d53-902e-470a-8db5-7e0d54b375ec",
+        "buildId": "bld_a53eefd5-edb3-468b-958a-ebfe256b9b0b",
+        "timestamp": "2026-09-10T07:33:54.465Z",
+        "level": "error",
+        "message": "Failed to create sandbox workspace: ENOENT: no such file or directory, lstat 'C:\\Users\\Akash\\OneDrive\\Documents\\awsmrw\\Medical\\SIH\\New folder_1\\apps\\api\\test-fixtures\\broken-build'"
+      }
+    ],
+    "bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3": [
+      {
+        "id": "log_81580b9c-94c2-4a0d-932b-264896b7d12a",
+        "buildId": "bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3",
+        "timestamp": "2026-09-10T07:33:54.490Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Preparing isolated environment for build bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3 at C:\\LaunchFlow\\sandboxes\\bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3..."
+      },
+      {
+        "id": "log_2158e8ed-6880-4835-a73e-a7377b84bc37",
+        "buildId": "bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3",
+        "timestamp": "2026-09-10T07:33:54.491Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Copying source repository to isolated workspace..."
+      },
+      {
+        "id": "log_641b9dcb-6343-4891-ad3c-4375d3c5bc19",
+        "buildId": "bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3",
+        "timestamp": "2026-09-10T07:33:54.493Z",
+        "level": "error",
+        "message": "Failed to create sandbox workspace: ENOENT: no such file or directory, lstat 'C:\\Users\\Akash\\OneDrive\\Documents\\awsmrw\\Medical\\SIH\\New folder_1\\apps\\api\\test-fixtures\\localhost-leak'"
+      }
+    ],
+    "bld_a0300d16-13cb-437d-9728-e820fb00864a": [
+      {
+        "id": "log_976283a8-9ae7-4cde-a3b8-4c69df2d7fc1",
+        "buildId": "bld_a0300d16-13cb-437d-9728-e820fb00864a",
+        "timestamp": "2026-09-10T07:34:10.209Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Preparing isolated environment for build bld_a0300d16-13cb-437d-9728-e820fb00864a at C:\\LaunchFlow\\sandboxes\\bld_a0300d16-13cb-437d-9728-e820fb00864a..."
+      },
+      {
+        "id": "log_6a33de26-d2aa-44e9-af47-1a75bc10c5aa",
+        "buildId": "bld_a0300d16-13cb-437d-9728-e820fb00864a",
+        "timestamp": "2026-09-10T07:34:10.210Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Copying source repository to isolated workspace..."
+      },
+      {
+        "id": "log_f8124879-7bfa-4272-aa48-a86412d51787",
+        "buildId": "bld_a0300d16-13cb-437d-9728-e820fb00864a",
+        "timestamp": "2026-09-10T07:34:10.211Z",
+        "level": "error",
+        "message": "Failed to create sandbox workspace: ENOENT: no such file or directory, lstat 'C:\\Users\\Akash\\OneDrive\\Documents\\awsmrw\\Medical\\SIH\\New folder_1\\apps\\api\\test-fixtures\\working-app'"
+      }
+    ],
+    "bld_ec10c489-fb9b-4b57-99de-374351117e89": [
+      {
+        "id": "log_a59bbc1e-2834-461f-ad04-e5af64cce171",
+        "buildId": "bld_ec10c489-fb9b-4b57-99de-374351117e89",
+        "timestamp": "2026-09-10T07:36:10.190Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Preparing isolated environment for build bld_ec10c489-fb9b-4b57-99de-374351117e89 at C:\\LaunchFlow\\sandboxes\\bld_ec10c489-fb9b-4b57-99de-374351117e89..."
+      },
+      {
+        "id": "log_0c0594ad-dc5b-4b85-95e9-d51e8d6c7060",
+        "buildId": "bld_ec10c489-fb9b-4b57-99de-374351117e89",
+        "timestamp": "2026-09-10T07:36:10.192Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Copying source repository to isolated workspace..."
+      },
+      {
+        "id": "log_965394ed-593b-4516-824f-3237a20affe1",
+        "buildId": "bld_ec10c489-fb9b-4b57-99de-374351117e89",
+        "timestamp": "2026-09-10T07:36:10.227Z",
+        "level": "info",
+        "message": "✓ Repository cloned into isolated sandbox: C:\\LaunchFlow\\sandboxes\\bld_ec10c489-fb9b-4b57-99de-374351117e89"
+      },
+      {
+        "id": "log_a2080ebd-3b3e-4153-b87d-e1a0367aa127",
+        "buildId": "bld_ec10c489-fb9b-4b57-99de-374351117e89",
+        "timestamp": "2026-09-10T07:36:10.230Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Running build command: \"node build.js\""
+      },
+      {
+        "id": "log_12f0a433-2a8f-4524-a0cf-79fd7c5a33ba",
+        "buildId": "bld_ec10c489-fb9b-4b57-99de-374351117e89",
+        "timestamp": "2026-09-10T07:36:10.403Z",
+        "level": "stdout",
+        "message": "✓ Build completed successfully: Generated dist/index.html"
+      },
+      {
+        "id": "log_ddda0787-9a7b-439f-a85e-ca6758f951e1",
+        "buildId": "bld_ec10c489-fb9b-4b57-99de-374351117e89",
+        "timestamp": "2026-09-10T07:36:10.422Z",
+        "level": "info",
+        "message": "✓ Build succeeded in 0.19s"
+      }
+    ],
+    "bld_12e364ab-206c-4e85-9942-03aee628f6f0": [
+      {
+        "id": "log_5ed7c2ab-241b-45cb-991a-df3ed01c349f",
+        "buildId": "bld_12e364ab-206c-4e85-9942-03aee628f6f0",
+        "timestamp": "2026-09-10T07:36:10.574Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Preparing isolated environment for build bld_12e364ab-206c-4e85-9942-03aee628f6f0 at C:\\LaunchFlow\\sandboxes\\bld_12e364ab-206c-4e85-9942-03aee628f6f0..."
+      },
+      {
+        "id": "log_613a4328-e272-46d3-9043-6a3e5ffc2d36",
+        "buildId": "bld_12e364ab-206c-4e85-9942-03aee628f6f0",
+        "timestamp": "2026-09-10T07:36:10.576Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Copying source repository to isolated workspace..."
+      },
+      {
+        "id": "log_60843b33-16d8-4112-b10d-ac1ea605e166",
+        "buildId": "bld_12e364ab-206c-4e85-9942-03aee628f6f0",
+        "timestamp": "2026-09-10T07:36:10.586Z",
+        "level": "info",
+        "message": "✓ Repository cloned into isolated sandbox: C:\\LaunchFlow\\sandboxes\\bld_12e364ab-206c-4e85-9942-03aee628f6f0"
+      },
+      {
+        "id": "log_520d8efe-b440-46d3-8b05-e5d609f3ac00",
+        "buildId": "bld_12e364ab-206c-4e85-9942-03aee628f6f0",
+        "timestamp": "2026-09-10T07:36:10.592Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Running build command: \"node build.js\""
+      },
+      {
+        "id": "log_d8655c42-c40a-4d63-8411-547c91c0a6f2",
+        "buildId": "bld_12e364ab-206c-4e85-9942-03aee628f6f0",
+        "timestamp": "2026-09-10T07:36:10.716Z",
+        "level": "stderr",
+        "message": "Error: Cannot find module '@auth/nextjs'"
+      },
+      {
+        "id": "log_7767c5dd-fe14-41b3-8ba8-2cff2e3e046e",
+        "buildId": "bld_12e364ab-206c-4e85-9942-03aee628f6f0",
+        "timestamp": "2026-09-10T07:36:10.731Z",
+        "level": "error",
+        "message": "✕ Build failed with exit code 1"
+      },
+      {
+        "id": "log_ae79c99f-c625-42a2-a1a5-d573666b2321",
+        "buildId": "bld_12e364ab-206c-4e85-9942-03aee628f6f0",
+        "timestamp": "2026-09-10T07:36:10.734Z",
+        "level": "warn",
+        "message": "[Diagnosis] Missing Module: @auth/nextjs: The build failed because code imports \"@auth/nextjs\", which is not installed or not listed in package.json."
+      }
+    ],
+    "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583": [
+      {
+        "id": "log_0c210161-2bce-45d0-b4c0-a97ff90f7098",
+        "buildId": "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583",
+        "timestamp": "2026-09-10T07:36:10.802Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Preparing isolated environment for build bld_00f350e2-e260-4f01-9621-d0e5d9b8d583 at C:\\LaunchFlow\\sandboxes\\bld_00f350e2-e260-4f01-9621-d0e5d9b8d583..."
+      },
+      {
+        "id": "log_b3401431-31ec-4175-9e34-2edd8eeadbc8",
+        "buildId": "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583",
+        "timestamp": "2026-09-10T07:36:10.802Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Copying source repository to isolated workspace..."
+      },
+      {
+        "id": "log_e2740675-a0a2-4145-aed4-d545df8f5b4f",
+        "buildId": "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583",
+        "timestamp": "2026-09-10T07:36:10.809Z",
+        "level": "info",
+        "message": "✓ Repository cloned into isolated sandbox: C:\\LaunchFlow\\sandboxes\\bld_00f350e2-e260-4f01-9621-d0e5d9b8d583"
+      },
+      {
+        "id": "log_9900b70d-d343-48ab-92ef-a322bba36248",
+        "buildId": "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583",
+        "timestamp": "2026-09-10T07:36:10.810Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Running build command: \"node build.js\""
+      },
+      {
+        "id": "log_572947b0-b4bd-406b-925c-314dcc032a77",
+        "buildId": "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583",
+        "timestamp": "2026-09-10T07:36:11.088Z",
+        "level": "stdout",
+        "message": "✓ Generated dist/index.html with localhost fetch"
+      },
+      {
+        "id": "log_ee93fff6-8011-481a-9ebd-ee1acaef042a",
+        "buildId": "bld_00f350e2-e260-4f01-9621-d0e5d9b8d583",
+        "timestamp": "2026-09-10T07:36:11.112Z",
+        "level": "info",
+        "message": "✓ Build succeeded in 0.30s"
+      }
+    ],
+    "bld_25ecc260-8d9f-4d91-b26a-dc82d5484657": [
+      {
+        "id": "log_72c00fc5-0341-4e98-b113-9e41de129751",
+        "buildId": "bld_25ecc260-8d9f-4d91-b26a-dc82d5484657",
+        "timestamp": "2026-09-10T07:36:11.361Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Preparing isolated environment for build bld_25ecc260-8d9f-4d91-b26a-dc82d5484657 at C:\\LaunchFlow\\sandboxes\\bld_25ecc260-8d9f-4d91-b26a-dc82d5484657..."
+      },
+      {
+        "id": "log_441f2e53-3fdb-48fc-bca5-5333f59c7854",
+        "buildId": "bld_25ecc260-8d9f-4d91-b26a-dc82d5484657",
+        "timestamp": "2026-09-10T07:36:11.363Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Copying source repository to isolated workspace..."
+      },
+      {
+        "id": "log_731a03a6-8444-4e0e-af46-ed60741c64cc",
+        "buildId": "bld_25ecc260-8d9f-4d91-b26a-dc82d5484657",
+        "timestamp": "2026-09-10T07:36:11.374Z",
+        "level": "info",
+        "message": "✓ Repository cloned into isolated sandbox: C:\\LaunchFlow\\sandboxes\\bld_25ecc260-8d9f-4d91-b26a-dc82d5484657"
+      },
+      {
+        "id": "log_376e88aa-2e62-400c-a628-a22fde596d5d",
+        "buildId": "bld_25ecc260-8d9f-4d91-b26a-dc82d5484657",
+        "timestamp": "2026-09-10T07:36:11.379Z",
+        "level": "info",
+        "message": "[LaunchFlow Sandbox] Running build command: \"echo \"Built in external sandbox\" > build.output\""
+      },
+      {
+        "id": "log_39e15d9f-6fac-4965-8f3a-ae9d20eddbde",
+        "buildId": "bld_25ecc260-8d9f-4d91-b26a-dc82d5484657",
+        "timestamp": "2026-09-10T07:36:11.535Z",
+        "level": "info",
+        "message": "✓ Build succeeded in 0.15s"
+      }
+    ]
+  },
+  "environmentVariables": {
+    "prj_18c2e26e-ceec-4924-8888-4d52673605ad": [
+      {
+        "id": "env_e20da37e-fcce-475f-8a78-350a174134ea",
+        "projectId": "prj_18c2e26e-ceec-4924-8888-4d52673605ad",
+        "key": "STRIPE_SECRET",
+        "value": "4a31076ba1b22ca5537523a8:f2b01d2a29688ef09c98bb2d50c57a62:090c966757a3ae7b7e9fbfad1cd8c8dd95f2f0eb468dd756",
+        "isSecret": true,
+        "category": "secret",
+        "createdAt": "2026-09-10T07:34:10.059Z",
+        "updatedAt": "2026-09-10T07:34:10.059Z"
+      }
+    ],
+    "prj_c82dc9af-00bd-42f1-9bca-d28c8c6d90ef": [
+      {
+        "id": "env_b19fb584-3ac0-49e6-b6df-4c50144e56e7",
+        "projectId": "prj_c82dc9af-00bd-42f1-9bca-d28c8c6d90ef",
+        "key": "DATABASE_URL",
+        "value": "83c3113877b96614ff24422f:d220ec7ea1ae414fb96501f518f08180:fd0a2ce01f0913ed59d79f44f214a3c6cea6838fda1e090e549b3436227146f2512bc8e62c0bad93",
+        "isSecret": true,
+        "category": "required",
+        "createdAt": "2026-09-10T07:36:10.785Z",
+        "updatedAt": "2026-09-10T07:36:10.785Z"
+      }
+    ],
+    "prj_51e0d69d-9cd0-4742-99e4-44a7a48ae65f": [
+      {
+        "id": "env_060b800b-029f-4427-a07e-051bf28a77e5",
+        "projectId": "prj_51e0d69d-9cd0-4742-99e4-44a7a48ae65f",
+        "key": "STRIPE_SECRET",
+        "value": "fda2ad8e2a6b59e96555dfac:9ac2bf53ab8cdf5e98cfd47eff597983:a27c71325e03ce40c41bf6aa934aa63adab5c2874c82fabb",
+        "isSecret": true,
+        "category": "secret",
+        "createdAt": "2026-09-10T07:36:11.312Z",
+        "updatedAt": "2026-09-10T07:36:11.312Z"
+      }
+    ]
+  },
+  "previewEnvironments": {
+    "prv_4494e2be-d9ba-4bac-bf65-8349cf698d44": {
+      "id": "prv_4494e2be-d9ba-4bac-bf65-8349cf698d44",
+      "projectId": "prj_e1dd632c-c082-4483-9e38-17a46470c211",
+      "deploymentId": "dpl_edcbb2d1-2dab-48a4-91e9-5747a1622d2d",
+      "internalPort": 51000,
+      "previewUrl": "http://localhost:4000/preview/prv_vigpq8p0/",
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_cf56ca0f-3a7d-4faf-ae10-fa0b3d8fdcf3",
+      "pid": null,
+      "status": "healthy",
+      "createdAt": "2026-09-10T07:34:09.705Z",
+      "expiresAt": "2026-09-10T09:34:09.705Z"
+    },
+    "prv_3f2e7a44-a227-41ef-a691-2be50fe685b2": {
+      "id": "prv_3f2e7a44-a227-41ef-a691-2be50fe685b2",
+      "projectId": "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb",
+      "deploymentId": "dpl_47fc6c76-7d7a-494c-a1aa-a17c6e3c987c",
+      "internalPort": 54721,
+      "previewUrl": "http://localhost:4000/preview/prv_2vvj8obn/",
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_ec10c489-fb9b-4b57-99de-374351117e89",
+      "pid": null,
+      "status": "healthy",
+      "createdAt": "2026-09-10T07:36:10.486Z",
+      "expiresAt": "2026-09-10T09:36:10.486Z"
+    },
+    "prv_fae77ed6-d547-4b91-b682-40e2ba67a410": {
+      "id": "prv_fae77ed6-d547-4b91-b682-40e2ba67a410",
+      "projectId": "prj_668c1f0a-8f07-47c4-83d0-c105878f9f28",
+      "deploymentId": "dpl_255ba583-937a-438a-bcbd-fba474d0c615",
+      "internalPort": 54737,
+      "previewUrl": "http://localhost:4000/preview/prv_fj3kf54i/",
+      "sandboxDir": "C:\\LaunchFlow\\sandboxes\\bld_00f350e2-e260-4f01-9621-d0e5d9b8d583",
+      "pid": null,
+      "status": "healthy",
+      "createdAt": "2026-09-10T07:36:11.118Z",
+      "expiresAt": "2026-09-10T09:36:11.118Z"
+    }
+  },
+  "readinessReports": {
+    "prj_e1dd632c-c082-4483-9e38-17a46470c211": [
+      {
+        "id": "rep_eeea6c43-7ad9-4b95-b247-6b2dc08600ec",
+        "projectId": "prj_e1dd632c-c082-4483-9e38-17a46470c211",
+        "deploymentId": "dpl_edcbb2d1-2dab-48a4-91e9-5747a1622d2d",
+        "totalScore": 44,
+        "passed": false,
+        "checks": [
+          {
+            "id": "chk_build",
+            "name": "Build Artifact Integrity",
+            "category": "build",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Build output directory missing.",
+            "issue": {
+              "category": "build",
+              "severity": "critical",
+              "title": "Missing Build Artifacts",
+              "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+              "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+              "fixAction": {
+                "type": "update_config",
+                "field": "buildCommand"
+              }
+            }
+          },
+          {
+            "id": "chk_server",
+            "name": "Application Server Health",
+            "category": "server",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Server failed to respond with 200 OK (received HTTP 0).",
+            "issue": {
+              "category": "server",
+              "severity": "critical",
+              "title": "Production Localhost Leak Detected",
+              "message": "Your client-side code is referencing a local URL: \"http://localhost:5000\".",
+              "recommendedFix": "Replace the hardcoded localhost URL with an environment variable (e.g. process.env.NEXT_PUBLIC_API_URL or VITE_API_URL) pointing to your production API.",
+              "fixAction": {
+                "type": "configure_env",
+                "field": "NEXT_PUBLIC_API_URL",
+                "suggestedValue": "https://api.yourdomain.com"
+              }
+            }
+          },
+          {
+            "id": "chk_homepage",
+            "name": "Homepage Root Route (/)",
+            "category": "homepage",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Homepage did not return valid HTML content.",
+            "issue": {
+              "category": "homepage",
+              "severity": "critical",
+              "title": "Homepage Failed to Load",
+              "message": "The root URL / did not return a valid HTML response.",
+              "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+            }
+          },
+          {
+            "id": "chk_routes",
+            "name": "Client & Server Route Verification",
+            "category": "routes",
+            "weight": 10,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "0 of 4 sampled routes resolved successfully."
+          },
+          {
+            "id": "chk_assets",
+            "name": "Static Asset Integrity",
+            "category": "assets",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All referenced JavaScript, CSS, and image assets resolved with 200 OK."
+          },
+          {
+            "id": "chk_leak",
+            "name": "Localhost Leak Detection",
+            "category": "localhost_leak",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "No hardcoded localhost, 127.0.0.1, or development ports leaked in client bundles."
+          },
+          {
+            "id": "chk_env",
+            "name": "Environment Variable Parity",
+            "category": "env_vars",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All required environment variables have been configured."
+          },
+          {
+            "id": "chk_db",
+            "name": "Database Connection Health",
+            "category": "database",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "No database dependency declared."
+          },
+          {
+            "id": "chk_security",
+            "name": "Security & Production Headers",
+            "category": "security",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 4,
+            "details": "Basic HTTP headers present. Consider adding X-Content-Type-Options: nosniff in production."
+          }
+        ],
+        "issues": [
+          {
+            "category": "build",
+            "severity": "critical",
+            "title": "Missing Build Artifacts",
+            "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+            "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+            "fixAction": {
+              "type": "update_config",
+              "field": "buildCommand"
+            }
+          },
+          {
+            "category": "server",
+            "severity": "critical",
+            "title": "Production Localhost Leak Detected",
+            "message": "Your client-side code is referencing a local URL: \"http://localhost:5000\".",
+            "recommendedFix": "Replace the hardcoded localhost URL with an environment variable (e.g. process.env.NEXT_PUBLIC_API_URL or VITE_API_URL) pointing to your production API.",
+            "fixAction": {
+              "type": "configure_env",
+              "field": "NEXT_PUBLIC_API_URL",
+              "suggestedValue": "https://api.yourdomain.com"
+            }
+          },
+          {
+            "category": "homepage",
+            "severity": "critical",
+            "title": "Homepage Failed to Load",
+            "message": "The root URL / did not return a valid HTML response.",
+            "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+          }
+        ],
+        "createdAt": "2026-09-10T07:34:09.764Z"
+      }
+    ],
+    "prj_c3736f7a-8ec6-436b-8faf-b09ea4c8497e": [
+      {
+        "id": "rep_3043a8f6-40e5-4fc7-96c0-50873b7ca59f",
+        "projectId": "prj_c3736f7a-8ec6-436b-8faf-b09ea4c8497e",
+        "deploymentId": "dpl_9bf4ed35-91e7-4c02-83a0-7f8fb00184c9",
+        "totalScore": 69,
+        "passed": false,
+        "checks": [
+          {
+            "id": "chk_build",
+            "name": "Build Artifact Integrity",
+            "category": "build",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Build output directory missing.",
+            "issue": {
+              "category": "build",
+              "severity": "critical",
+              "title": "Missing Build Artifacts",
+              "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+              "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+              "fixAction": {
+                "type": "update_config",
+                "field": "buildCommand"
+              }
+            }
+          },
+          {
+            "id": "chk_server",
+            "name": "Application Server Health",
+            "category": "server",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "latencyMs": 17,
+            "details": "Application booted successfully and responds on port 62500 in 17ms."
+          },
+          {
+            "id": "chk_homepage",
+            "name": "Homepage Root Route (/)",
+            "category": "homepage",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Homepage did not return valid HTML content.",
+            "issue": {
+              "category": "homepage",
+              "severity": "critical",
+              "title": "Homepage Failed to Load",
+              "message": "The root URL / did not return a valid HTML response.",
+              "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+            }
+          },
+          {
+            "id": "chk_routes",
+            "name": "Client & Server Route Verification",
+            "category": "routes",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "4 of 4 sampled routes resolved successfully."
+          },
+          {
+            "id": "chk_assets",
+            "name": "Static Asset Integrity",
+            "category": "assets",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All referenced JavaScript, CSS, and image assets resolved with 200 OK."
+          },
+          {
+            "id": "chk_leak",
+            "name": "Localhost Leak Detection",
+            "category": "localhost_leak",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "No hardcoded localhost, 127.0.0.1, or development ports leaked in client bundles."
+          },
+          {
+            "id": "chk_env",
+            "name": "Environment Variable Parity",
+            "category": "env_vars",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All required environment variables have been configured."
+          },
+          {
+            "id": "chk_api",
+            "name": "API Endpoint Health",
+            "category": "api",
+            "weight": 5,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "API endpoint returned HTTP 500",
+            "issue": {
+              "category": "api",
+              "severity": "critical",
+              "title": "API Server Responded with 500 Internal Error",
+              "message": "The /api/health endpoint threw an unhandled server exception.",
+              "recommendedFix": "Inspect server logs for unhandled database connections or missing secrets."
+            }
+          },
+          {
+            "id": "chk_db",
+            "name": "Database Connection Health",
+            "category": "database",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "No database dependency declared."
+          },
+          {
+            "id": "chk_security",
+            "name": "Security & Production Headers",
+            "category": "security",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 4,
+            "details": "Basic HTTP headers present. Consider adding X-Content-Type-Options: nosniff in production."
+          }
+        ],
+        "issues": [
+          {
+            "category": "build",
+            "severity": "critical",
+            "title": "Missing Build Artifacts",
+            "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+            "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+            "fixAction": {
+              "type": "update_config",
+              "field": "buildCommand"
+            }
+          },
+          {
+            "category": "homepage",
+            "severity": "critical",
+            "title": "Homepage Failed to Load",
+            "message": "The root URL / did not return a valid HTML response.",
+            "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+          },
+          {
+            "category": "api",
+            "severity": "critical",
+            "title": "API Server Responded with 500 Internal Error",
+            "message": "The /api/health endpoint threw an unhandled server exception.",
+            "recommendedFix": "Inspect server logs for unhandled database connections or missing secrets."
+          }
+        ],
+        "createdAt": "2026-09-10T07:34:10.193Z"
+      }
+    ],
+    "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb": [
+      {
+        "id": "rep_282ce0e6-4ff5-4053-8c6a-34fe71ec36c5",
+        "projectId": "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb",
+        "deploymentId": "dpl_47fc6c76-7d7a-494c-a1aa-a17c6e3c987c",
+        "totalScore": 100,
+        "passed": true,
+        "checks": [
+          {
+            "id": "chk_build",
+            "name": "Build Artifact Integrity",
+            "category": "build",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "Build completed cleanly and distribution artifacts are present."
+          },
+          {
+            "id": "chk_server",
+            "name": "Application Server Health",
+            "category": "server",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "latencyMs": 37,
+            "details": "Application booted successfully and responds on port 54721 in 37ms."
+          },
+          {
+            "id": "chk_homepage",
+            "name": "Homepage Root Route (/)",
+            "category": "homepage",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "Homepage loaded with HTTP 200 OK (1 KB payload)."
+          },
+          {
+            "id": "chk_routes",
+            "name": "Client & Server Route Verification",
+            "category": "routes",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "4 of 4 sampled routes resolved successfully."
+          },
+          {
+            "id": "chk_assets",
+            "name": "Static Asset Integrity",
+            "category": "assets",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All referenced JavaScript, CSS, and image assets resolved with 200 OK."
+          },
+          {
+            "id": "chk_leak",
+            "name": "Localhost Leak Detection",
+            "category": "localhost_leak",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "No hardcoded localhost, 127.0.0.1, or development ports leaked in client bundles."
+          },
+          {
+            "id": "chk_env",
+            "name": "Environment Variable Parity",
+            "category": "env_vars",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All required environment variables have been configured."
+          },
+          {
+            "id": "chk_api",
+            "name": "API Endpoint Health",
+            "category": "api",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "Health endpoint /api/health returned 200 OK."
+          },
+          {
+            "id": "chk_db",
+            "name": "Database Connection Health",
+            "category": "database",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "No database dependency declared."
+          },
+          {
+            "id": "chk_security",
+            "name": "Security & Production Headers",
+            "category": "security",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 4,
+            "details": "Basic HTTP headers present. Consider adding X-Content-Type-Options: nosniff in production."
+          }
+        ],
+        "issues": [],
+        "createdAt": "2026-09-10T07:36:10.546Z"
+      }
+    ],
+    "prj_c82dc9af-00bd-42f1-9bca-d28c8c6d90ef": [
+      {
+        "id": "rep_c546e579-cd7e-42b0-ad8b-042aacdd4c35",
+        "projectId": "prj_c82dc9af-00bd-42f1-9bca-d28c8c6d90ef",
+        "deploymentId": "dpl_ec3852ec-efd6-42fb-808a-011e6c520e0b",
+        "totalScore": 44,
+        "passed": false,
+        "checks": [
+          {
+            "id": "chk_build",
+            "name": "Build Artifact Integrity",
+            "category": "build",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Build output directory missing.",
+            "issue": {
+              "category": "build",
+              "severity": "critical",
+              "title": "Missing Build Artifacts",
+              "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+              "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+              "fixAction": {
+                "type": "update_config",
+                "field": "buildCommand"
+              }
+            }
+          },
+          {
+            "id": "chk_server",
+            "name": "Application Server Health",
+            "category": "server",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Server failed to respond with 200 OK (received HTTP 0).",
+            "issue": {
+              "category": "server",
+              "severity": "critical",
+              "title": "Production Localhost Leak Detected",
+              "message": "Your client-side code is referencing a local URL: \"http://localhost:5000\".",
+              "recommendedFix": "Replace the hardcoded localhost URL with an environment variable (e.g. process.env.NEXT_PUBLIC_API_URL or VITE_API_URL) pointing to your production API.",
+              "fixAction": {
+                "type": "configure_env",
+                "field": "NEXT_PUBLIC_API_URL",
+                "suggestedValue": "https://api.yourdomain.com"
+              }
+            }
+          },
+          {
+            "id": "chk_homepage",
+            "name": "Homepage Root Route (/)",
+            "category": "homepage",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Homepage did not return valid HTML content.",
+            "issue": {
+              "category": "homepage",
+              "severity": "critical",
+              "title": "Homepage Failed to Load",
+              "message": "The root URL / did not return a valid HTML response.",
+              "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+            }
+          },
+          {
+            "id": "chk_routes",
+            "name": "Client & Server Route Verification",
+            "category": "routes",
+            "weight": 10,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "0 of 4 sampled routes resolved successfully."
+          },
+          {
+            "id": "chk_assets",
+            "name": "Static Asset Integrity",
+            "category": "assets",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All referenced JavaScript, CSS, and image assets resolved with 200 OK."
+          },
+          {
+            "id": "chk_leak",
+            "name": "Localhost Leak Detection",
+            "category": "localhost_leak",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "No hardcoded localhost, 127.0.0.1, or development ports leaked in client bundles."
+          },
+          {
+            "id": "chk_env",
+            "name": "Environment Variable Parity",
+            "category": "env_vars",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All required environment variables have been configured."
+          },
+          {
+            "id": "chk_db",
+            "name": "Database Connection Health",
+            "category": "database",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "Cloud database connection configured."
+          },
+          {
+            "id": "chk_security",
+            "name": "Security & Production Headers",
+            "category": "security",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 4,
+            "details": "Basic HTTP headers present. Consider adding X-Content-Type-Options: nosniff in production."
+          }
+        ],
+        "issues": [
+          {
+            "category": "build",
+            "severity": "critical",
+            "title": "Missing Build Artifacts",
+            "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+            "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+            "fixAction": {
+              "type": "update_config",
+              "field": "buildCommand"
+            }
+          },
+          {
+            "category": "server",
+            "severity": "critical",
+            "title": "Production Localhost Leak Detected",
+            "message": "Your client-side code is referencing a local URL: \"http://localhost:5000\".",
+            "recommendedFix": "Replace the hardcoded localhost URL with an environment variable (e.g. process.env.NEXT_PUBLIC_API_URL or VITE_API_URL) pointing to your production API.",
+            "fixAction": {
+              "type": "configure_env",
+              "field": "NEXT_PUBLIC_API_URL",
+              "suggestedValue": "https://api.yourdomain.com"
+            }
+          },
+          {
+            "category": "homepage",
+            "severity": "critical",
+            "title": "Homepage Failed to Load",
+            "message": "The root URL / did not return a valid HTML response.",
+            "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+          }
+        ],
+        "createdAt": "2026-09-10T07:36:10.793Z"
+      },
+      {
+        "id": "rep_05d2ec89-bf11-4ecb-a67c-1e446d1233c7",
+        "projectId": "prj_c82dc9af-00bd-42f1-9bca-d28c8c6d90ef",
+        "deploymentId": "dpl_ec3852ec-efd6-42fb-808a-011e6c520e0b",
+        "totalScore": 34,
+        "passed": false,
+        "checks": [
+          {
+            "id": "chk_build",
+            "name": "Build Artifact Integrity",
+            "category": "build",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Build output directory missing.",
+            "issue": {
+              "category": "build",
+              "severity": "critical",
+              "title": "Missing Build Artifacts",
+              "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+              "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+              "fixAction": {
+                "type": "update_config",
+                "field": "buildCommand"
+              }
+            }
+          },
+          {
+            "id": "chk_server",
+            "name": "Application Server Health",
+            "category": "server",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Server failed to respond with 200 OK (received HTTP 0).",
+            "issue": {
+              "category": "server",
+              "severity": "critical",
+              "title": "Production Localhost Leak Detected",
+              "message": "Your client-side code is referencing a local URL: \"http://localhost:5000\".",
+              "recommendedFix": "Replace the hardcoded localhost URL with an environment variable (e.g. process.env.NEXT_PUBLIC_API_URL or VITE_API_URL) pointing to your production API.",
+              "fixAction": {
+                "type": "configure_env",
+                "field": "NEXT_PUBLIC_API_URL",
+                "suggestedValue": "https://api.yourdomain.com"
+              }
+            }
+          },
+          {
+            "id": "chk_homepage",
+            "name": "Homepage Root Route (/)",
+            "category": "homepage",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Homepage did not return valid HTML content.",
+            "issue": {
+              "category": "homepage",
+              "severity": "critical",
+              "title": "Homepage Failed to Load",
+              "message": "The root URL / did not return a valid HTML response.",
+              "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+            }
+          },
+          {
+            "id": "chk_routes",
+            "name": "Client & Server Route Verification",
+            "category": "routes",
+            "weight": 10,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "0 of 4 sampled routes resolved successfully."
+          },
+          {
+            "id": "chk_assets",
+            "name": "Static Asset Integrity",
+            "category": "assets",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All referenced JavaScript, CSS, and image assets resolved with 200 OK."
+          },
+          {
+            "id": "chk_leak",
+            "name": "Localhost Leak Detection",
+            "category": "localhost_leak",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "No hardcoded localhost, 127.0.0.1, or development ports leaked in client bundles."
+          },
+          {
+            "id": "chk_env",
+            "name": "Environment Variable Parity",
+            "category": "env_vars",
+            "weight": 10,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Missing 1 required environment variable(s): DATABASE_URL.",
+            "issue": {
+              "category": "env_vars",
+              "severity": "critical",
+              "title": "Missing Required Variable: DATABASE_URL",
+              "message": "The project requires DATABASE_URL in production, but no values were configured.",
+              "detectedValue": "DATABASE_URL",
+              "recommendedFix": "Go to Environment Variables tab and supply production values for DATABASE_URL.",
+              "fixAction": {
+                "type": "configure_env",
+                "field": "DATABASE_URL"
+              }
+            }
+          },
+          {
+            "id": "chk_db",
+            "name": "Database Connection Health",
+            "category": "database",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "No database dependency declared."
+          },
+          {
+            "id": "chk_security",
+            "name": "Security & Production Headers",
+            "category": "security",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 4,
+            "details": "Basic HTTP headers present. Consider adding X-Content-Type-Options: nosniff in production."
+          }
+        ],
+        "issues": [
+          {
+            "category": "build",
+            "severity": "critical",
+            "title": "Missing Build Artifacts",
+            "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+            "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+            "fixAction": {
+              "type": "update_config",
+              "field": "buildCommand"
+            }
+          },
+          {
+            "category": "server",
+            "severity": "critical",
+            "title": "Production Localhost Leak Detected",
+            "message": "Your client-side code is referencing a local URL: \"http://localhost:5000\".",
+            "recommendedFix": "Replace the hardcoded localhost URL with an environment variable (e.g. process.env.NEXT_PUBLIC_API_URL or VITE_API_URL) pointing to your production API.",
+            "fixAction": {
+              "type": "configure_env",
+              "field": "NEXT_PUBLIC_API_URL",
+              "suggestedValue": "https://api.yourdomain.com"
+            }
+          },
+          {
+            "category": "homepage",
+            "severity": "critical",
+            "title": "Homepage Failed to Load",
+            "message": "The root URL / did not return a valid HTML response.",
+            "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+          },
+          {
+            "category": "env_vars",
+            "severity": "critical",
+            "title": "Missing Required Variable: DATABASE_URL",
+            "message": "The project requires DATABASE_URL in production, but no values were configured.",
+            "detectedValue": "DATABASE_URL",
+            "recommendedFix": "Go to Environment Variables tab and supply production values for DATABASE_URL.",
+            "fixAction": {
+              "type": "configure_env",
+              "field": "DATABASE_URL"
+            }
+          }
+        ],
+        "createdAt": "2026-09-10T07:36:10.780Z"
+      }
+    ],
+    "prj_668c1f0a-8f07-47c4-83d0-c105878f9f28": [
+      {
+        "id": "rep_5f71f22d-8e9d-412b-8eca-df8fb0b7b439",
+        "projectId": "prj_668c1f0a-8f07-47c4-83d0-c105878f9f28",
+        "deploymentId": "dpl_255ba583-937a-438a-bcbd-fba474d0c615",
+        "totalScore": 89,
+        "passed": false,
+        "checks": [
+          {
+            "id": "chk_build",
+            "name": "Build Artifact Integrity",
+            "category": "build",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "Build completed cleanly and distribution artifacts are present."
+          },
+          {
+            "id": "chk_server",
+            "name": "Application Server Health",
+            "category": "server",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "latencyMs": 20,
+            "details": "Application booted successfully and responds on port 54737 in 20ms."
+          },
+          {
+            "id": "chk_homepage",
+            "name": "Homepage Root Route (/)",
+            "category": "homepage",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "Homepage loaded with HTTP 200 OK (0 KB payload)."
+          },
+          {
+            "id": "chk_routes",
+            "name": "Client & Server Route Verification",
+            "category": "routes",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "4 of 4 sampled routes resolved successfully."
+          },
+          {
+            "id": "chk_assets",
+            "name": "Static Asset Integrity",
+            "category": "assets",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All referenced JavaScript, CSS, and image assets resolved with 200 OK."
+          },
+          {
+            "id": "chk_leak",
+            "name": "Localhost Leak Detection",
+            "category": "localhost_leak",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Hardcoded development URL found: http://localhost:5000",
+            "issue": {
+              "category": "localhost_leak",
+              "severity": "critical",
+              "title": "Localhost API URL in Production Bundle",
+              "message": "Your code references \"http://localhost:5000\". In cloud production, visitors' browsers cannot access your local computer.",
+              "detectedValue": "http://localhost:5000",
+              "recommendedFix": "Replace the hardcoded localhost URL with a production API URL via environment variables.",
+              "fixAction": {
+                "type": "configure_env",
+                "field": "NEXT_PUBLIC_API_URL",
+                "suggestedValue": "https://api.yourdomain.com"
+              }
+            }
+          },
+          {
+            "id": "chk_env",
+            "name": "Environment Variable Parity",
+            "category": "env_vars",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All required environment variables have been configured."
+          },
+          {
+            "id": "chk_api",
+            "name": "API Endpoint Health",
+            "category": "api",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "Health endpoint /api/health returned 200 OK."
+          },
+          {
+            "id": "chk_db",
+            "name": "Database Connection Health",
+            "category": "database",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "No database dependency declared."
+          },
+          {
+            "id": "chk_security",
+            "name": "Security & Production Headers",
+            "category": "security",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 4,
+            "details": "Basic HTTP headers present. Consider adding X-Content-Type-Options: nosniff in production."
+          }
+        ],
+        "issues": [
+          {
+            "category": "localhost_leak",
+            "severity": "critical",
+            "title": "Localhost API URL in Production Bundle",
+            "message": "Your code references \"http://localhost:5000\". In cloud production, visitors' browsers cannot access your local computer.",
+            "detectedValue": "http://localhost:5000",
+            "recommendedFix": "Replace the hardcoded localhost URL with a production API URL via environment variables.",
+            "fixAction": {
+              "type": "configure_env",
+              "field": "NEXT_PUBLIC_API_URL",
+              "suggestedValue": "https://api.yourdomain.com"
+            }
+          }
+        ],
+        "createdAt": "2026-09-10T07:36:11.159Z"
+      }
+    ],
+    "prj_6927a9b1-025e-4705-a0fc-56046015415d": [
+      {
+        "id": "rep_9b07b732-8f26-490f-ac00-353abeb7490b",
+        "projectId": "prj_6927a9b1-025e-4705-a0fc-56046015415d",
+        "deploymentId": "dpl_ca8c070f-6295-4362-9e5d-121cc2e76467",
+        "totalScore": 69,
+        "passed": false,
+        "checks": [
+          {
+            "id": "chk_build",
+            "name": "Build Artifact Integrity",
+            "category": "build",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Build output directory missing.",
+            "issue": {
+              "category": "build",
+              "severity": "critical",
+              "title": "Missing Build Artifacts",
+              "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+              "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+              "fixAction": {
+                "type": "update_config",
+                "field": "buildCommand"
+              }
+            }
+          },
+          {
+            "id": "chk_server",
+            "name": "Application Server Health",
+            "category": "server",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "latencyMs": 6,
+            "details": "Application booted successfully and responds on port 54740 in 6ms."
+          },
+          {
+            "id": "chk_homepage",
+            "name": "Homepage Root Route (/)",
+            "category": "homepage",
+            "weight": 15,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "Homepage did not return valid HTML content.",
+            "issue": {
+              "category": "homepage",
+              "severity": "critical",
+              "title": "Homepage Failed to Load",
+              "message": "The root URL / did not return a valid HTML response.",
+              "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+            }
+          },
+          {
+            "id": "chk_routes",
+            "name": "Client & Server Route Verification",
+            "category": "routes",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "4 of 4 sampled routes resolved successfully."
+          },
+          {
+            "id": "chk_assets",
+            "name": "Static Asset Integrity",
+            "category": "assets",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All referenced JavaScript, CSS, and image assets resolved with 200 OK."
+          },
+          {
+            "id": "chk_leak",
+            "name": "Localhost Leak Detection",
+            "category": "localhost_leak",
+            "weight": 15,
+            "passed": true,
+            "scoreEarned": 15,
+            "details": "No hardcoded localhost, 127.0.0.1, or development ports leaked in client bundles."
+          },
+          {
+            "id": "chk_env",
+            "name": "Environment Variable Parity",
+            "category": "env_vars",
+            "weight": 10,
+            "passed": true,
+            "scoreEarned": 10,
+            "details": "All required environment variables have been configured."
+          },
+          {
+            "id": "chk_api",
+            "name": "API Endpoint Health",
+            "category": "api",
+            "weight": 5,
+            "passed": false,
+            "scoreEarned": 0,
+            "details": "API endpoint returned HTTP 500",
+            "issue": {
+              "category": "api",
+              "severity": "critical",
+              "title": "API Server Responded with 500 Internal Error",
+              "message": "The /api/health endpoint threw an unhandled server exception.",
+              "recommendedFix": "Inspect server logs for unhandled database connections or missing secrets."
+            }
+          },
+          {
+            "id": "chk_db",
+            "name": "Database Connection Health",
+            "category": "database",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 5,
+            "details": "No database dependency declared."
+          },
+          {
+            "id": "chk_security",
+            "name": "Security & Production Headers",
+            "category": "security",
+            "weight": 5,
+            "passed": true,
+            "scoreEarned": 4,
+            "details": "Basic HTTP headers present. Consider adding X-Content-Type-Options: nosniff in production."
+          }
+        ],
+        "issues": [
+          {
+            "category": "build",
+            "severity": "critical",
+            "title": "Missing Build Artifacts",
+            "message": "No output files were produced by the build command in dist/, build/, or .next/.",
+            "recommendedFix": "Verify your package.json build script outputs production files to the expected directory.",
+            "fixAction": {
+              "type": "update_config",
+              "field": "buildCommand"
+            }
+          },
+          {
+            "category": "homepage",
+            "severity": "critical",
+            "title": "Homepage Failed to Load",
+            "message": "The root URL / did not return a valid HTML response.",
+            "recommendedFix": "Check that your application router renders an index or home page without throwing exceptions."
+          },
+          {
+            "category": "api",
+            "severity": "critical",
+            "title": "API Server Responded with 500 Internal Error",
+            "message": "The /api/health endpoint threw an unhandled server exception.",
+            "recommendedFix": "Inspect server logs for unhandled database connections or missing secrets."
+          }
+        ],
+        "createdAt": "2026-09-10T07:36:11.342Z"
+      }
+    ]
+  },
+  "tunnelSessions": {},
+  "healthChecks": {
+    "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb": [
+      {
+        "id": "chk_e27c4e02-cdf4-483d-810b-edec3ecd258d",
+        "projectId": "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb",
+        "deploymentId": "dpl_47fc6c76-7d7a-494c-a1aa-a17c6e3c987c",
+        "statusCode": 503,
+        "responseTimeMs": 4,
+        "isHealthy": false,
+        "checkedAt": "2026-09-10T07:36:10.560Z"
+      }
+    ]
+  },
+  "domains": {
+    "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb": [
+      {
+        "id": "dom_928ff13d-29d2-4b04-ac53-6fe7ca62cdaf",
+        "projectId": "prj_89e6d360-7995-424a-b7dc-db4d2bcbadfb",
+        "domain": "production-working-app-77e7ce.launchflow.app",
+        "isCustom": false,
+        "verified": true,
+        "sslStatus": "active",
+        "createdAt": "2026-09-10T07:36:10.562Z"
+      }
+    ]
+  }
+}
